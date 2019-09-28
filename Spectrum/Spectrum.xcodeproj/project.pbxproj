@@ -1,0 +1,509 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		95117A26232EEA93004DCC12 /* SKPhysicsWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95117A25232EEA93004DCC12 /* SKPhysicsWorld.swift */; };
+		951E057B232C1ED3003786D1 /* CGFloat Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 951E057A232C1ED3003786D1 /* CGFloat Extensions.swift */; };
+		9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C367231756AB008F28C7 /* AppDelegate.swift */; };
+		9547C36A231756AB008F28C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9547C369231756AB008F28C7 /* GameScene.sks */; };
+		9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C36D231756AB008F28C7 /* SpectrumScene.swift */; };
+		9547C370231756AB008F28C7 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C36F231756AB008F28C7 /* GameViewController.swift */; };
+		9547C373231756AB008F28C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9547C371231756AB008F28C7 /* Main.storyboard */; };
+		9547C375231756AC008F28C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9547C374231756AC008F28C7 /* Assets.xcassets */; };
+		9547C378231756AC008F28C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9547C376231756AC008F28C7 /* LaunchScreen.storyboard */; };
+		9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79D2339647600615E7D /* ControlDelagate.swift */; };
+		9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79F233987A300615E7D /* StartGameDelegate.swift */; };
+		95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C273FC232D713500DDDD58 /* SpectrumShapes.swift */; };
+		95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB96062329810E007579EF /* SpawnerEntity.swift */; };
+		95DB960D232983BB007579EF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960C232983BB007579EF /* Player.swift */; };
+		95DB961023298577007579EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960F23298577007579EF /* Constants.swift */; };
+		95DB96142329B41F007579EF /* ColorStars.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 95DB96122329B41F007579EF /* ColorStars.scnp */; };
+		95DB96152329B41F007579EF /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 95DB96132329B41F007579EF /* star.png */; };
+		95FBB6D2233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */; };
+		95FBB6D3233C16DA003ADBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D1233C16DA003ADBEA /* Assets.xcassets */; };
+		95FBB6D5233C179E003ADBEA /* RightSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D4233C179E003ADBEA /* RightSideScreenFocusEmitter.sks */; };
+		95FBB6D8233C2809003ADBEA /* TopSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D7233C2809003ADBEA /* TopSideScreenFocusEmitter.sks */; };
+		95FBB6DA233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D9233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks */; };
+		95FBB6DC233C4119003ADBEA /* FocusFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6DB233C4119003ADBEA /* FocusFire.sks */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		95117A25232EEA93004DCC12 /* SKPhysicsWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKPhysicsWorld.swift; sourceTree = "<group>"; };
+		951E057A232C1ED3003786D1 /* CGFloat Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGFloat Extensions.swift"; sourceTree = "<group>"; };
+		9547C364231756AB008F28C7 /* Spectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9547C367231756AB008F28C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9547C369231756AB008F28C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		9547C36D231756AB008F28C7 /* SpectrumScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumScene.swift; sourceTree = "<group>"; };
+		9547C36F231756AB008F28C7 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		9547C372231756AB008F28C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9547C374231756AC008F28C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9547C377231756AC008F28C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9547C379231756AC008F28C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9576D79D2339647600615E7D /* ControlDelagate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDelagate.swift; sourceTree = "<group>"; };
+		9576D79F233987A300615E7D /* StartGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameDelegate.swift; sourceTree = "<group>"; };
+		95C273FC232D713500DDDD58 /* SpectrumShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumShapes.swift; sourceTree = "<group>"; };
+		95DB96062329810E007579EF /* SpawnerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerEntity.swift; sourceTree = "<group>"; };
+		95DB960C232983BB007579EF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		95DB960F23298577007579EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		95DB96122329B41F007579EF /* ColorStars.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ColorStars.scnp; sourceTree = "<group>"; };
+		95DB96132329B41F007579EF /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeftSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
+		95FBB6D1233C16DA003ADBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		95FBB6D4233C179E003ADBEA /* RightSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RightSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
+		95FBB6D7233C2809003ADBEA /* TopSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TopSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
+		95FBB6D9233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = BottomSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
+		95FBB6DB233C4119003ADBEA /* FocusFire.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = FocusFire.sks; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9547C361231756AB008F28C7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		95058D3E2340093B0094C359 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				95DB96062329810E007579EF /* SpawnerEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		95058D3F234009480094C359 /* Conponents */ = {
+			isa = PBXGroup;
+			children = (
+				95DB960C232983BB007579EF /* Player.swift */,
+			);
+			path = Conponents;
+			sourceTree = "<group>";
+		};
+		95058D40234009800094C359 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		95188400232D5C830018CF51 /* Shapes */ = {
+			isa = PBXGroup;
+			children = (
+				95C273FC232D713500DDDD58 /* SpectrumShapes.swift */,
+			);
+			path = Shapes;
+			sourceTree = "<group>";
+		};
+		951E0579232C1EBC003786D1 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				951E057A232C1ED3003786D1 /* CGFloat Extensions.swift */,
+				95117A25232EEA93004DCC12 /* SKPhysicsWorld.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		9547C35B231756AB008F28C7 = {
+			isa = PBXGroup;
+			children = (
+				9547C366231756AB008F28C7 /* Spectrum */,
+				9547C365231756AB008F28C7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9547C365231756AB008F28C7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9547C364231756AB008F28C7 /* Spectrum.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9547C366231756AB008F28C7 /* Spectrum */ = {
+			isa = PBXGroup;
+			children = (
+				95DB960523297C09007579EF /* App Control */,
+				951E0579232C1EBC003786D1 /* Extensions */,
+				95DB960323297B54007579EF /* Game Model Objects And COnstants */,
+				95DB960423297B68007579EF /* Game Scene and actions */,
+				95DB96112329B3D0007579EF /* Emitters */,
+				9547C374231756AC008F28C7 /* Assets.xcassets */,
+				9547C379231756AC008F28C7 /* Info.plist */,
+			);
+			path = Spectrum;
+			sourceTree = "<group>";
+		};
+		95DB960323297B54007579EF /* Game Model Objects And COnstants */ = {
+			isa = PBXGroup;
+			children = (
+				95058D40234009800094C359 /* Model */,
+				95058D3E2340093B0094C359 /* Entities */,
+				95058D3F234009480094C359 /* Conponents */,
+				95188400232D5C830018CF51 /* Shapes */,
+				95DB960E23298544007579EF /* Game Constants */,
+			);
+			path = "Game Model Objects And COnstants";
+			sourceTree = "<group>";
+		};
+		95DB960423297B68007579EF /* Game Scene and actions */ = {
+			isa = PBXGroup;
+			children = (
+				9547C369231756AB008F28C7 /* GameScene.sks */,
+				9547C36D231756AB008F28C7 /* SpectrumScene.swift */,
+				9576D79D2339647600615E7D /* ControlDelagate.swift */,
+				9576D79F233987A300615E7D /* StartGameDelegate.swift */,
+			);
+			path = "Game Scene and actions";
+			sourceTree = "<group>";
+		};
+		95DB960523297C09007579EF /* App Control */ = {
+			isa = PBXGroup;
+			children = (
+				9547C371231756AB008F28C7 /* Main.storyboard */,
+				9547C376231756AC008F28C7 /* LaunchScreen.storyboard */,
+				9547C367231756AB008F28C7 /* AppDelegate.swift */,
+				9547C36F231756AB008F28C7 /* GameViewController.swift */,
+			);
+			path = "App Control";
+			sourceTree = "<group>";
+		};
+		95DB960E23298544007579EF /* Game Constants */ = {
+			isa = PBXGroup;
+			children = (
+				95DB960F23298577007579EF /* Constants.swift */,
+			);
+			path = "Game Constants";
+			sourceTree = "<group>";
+		};
+		95DB96112329B3D0007579EF /* Emitters */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB6D6233C1C59003ADBEA /* Focus */,
+				95DB96132329B41F007579EF /* star.png */,
+				95DB96122329B41F007579EF /* ColorStars.scnp */,
+			);
+			path = Emitters;
+			sourceTree = "<group>";
+		};
+		95FBB6CF233C1349003ADBEA /* ScreenFocus */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */,
+				95FBB6D1233C16DA003ADBEA /* Assets.xcassets */,
+				95FBB6D4233C179E003ADBEA /* RightSideScreenFocusEmitter.sks */,
+				95FBB6D7233C2809003ADBEA /* TopSideScreenFocusEmitter.sks */,
+				95FBB6D9233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks */,
+			);
+			path = ScreenFocus;
+			sourceTree = "<group>";
+		};
+		95FBB6D6233C1C59003ADBEA /* Focus */ = {
+			isa = PBXGroup;
+			children = (
+				95FBB6DB233C4119003ADBEA /* FocusFire.sks */,
+				95FBB6CF233C1349003ADBEA /* ScreenFocus */,
+			);
+			path = Focus;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9547C363231756AB008F28C7 /* Spectrum */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9547C37C231756AC008F28C7 /* Build configuration list for PBXNativeTarget "Spectrum" */;
+			buildPhases = (
+				9547C360231756AB008F28C7 /* Sources */,
+				9547C361231756AB008F28C7 /* Frameworks */,
+				9547C362231756AB008F28C7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Spectrum;
+			productName = Spectrum;
+			productReference = 9547C364231756AB008F28C7 /* Spectrum.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9547C35C231756AB008F28C7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1030;
+				LastUpgradeCheck = 1030;
+				ORGANIZATIONNAME = TokenResearch;
+				TargetAttributes = {
+					9547C363231756AB008F28C7 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+				};
+			};
+			buildConfigurationList = 9547C35F231756AB008F28C7 /* Build configuration list for PBXProject "Spectrum" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9547C35B231756AB008F28C7;
+			productRefGroup = 9547C365231756AB008F28C7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9547C363231756AB008F28C7 /* Spectrum */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9547C362231756AB008F28C7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9547C373231756AB008F28C7 /* Main.storyboard in Resources */,
+				9547C36A231756AB008F28C7 /* GameScene.sks in Resources */,
+				95FBB6DA233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks in Resources */,
+				95FBB6D3233C16DA003ADBEA /* Assets.xcassets in Resources */,
+				9547C375231756AC008F28C7 /* Assets.xcassets in Resources */,
+				95FBB6D2233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks in Resources */,
+				95FBB6DC233C4119003ADBEA /* FocusFire.sks in Resources */,
+				95FBB6D5233C179E003ADBEA /* RightSideScreenFocusEmitter.sks in Resources */,
+				95DB96142329B41F007579EF /* ColorStars.scnp in Resources */,
+				95DB96152329B41F007579EF /* star.png in Resources */,
+				9547C378231756AC008F28C7 /* LaunchScreen.storyboard in Resources */,
+				95FBB6D8233C2809003ADBEA /* TopSideScreenFocusEmitter.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9547C360231756AB008F28C7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */,
+				9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */,
+				9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */,
+				9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */,
+				9547C370231756AB008F28C7 /* GameViewController.swift in Sources */,
+				9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */,
+				95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */,
+				95DB960D232983BB007579EF /* Player.swift in Sources */,
+				951E057B232C1ED3003786D1 /* CGFloat Extensions.swift in Sources */,
+				95117A26232EEA93004DCC12 /* SKPhysicsWorld.swift in Sources */,
+				95DB961023298577007579EF /* Constants.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		9547C371231756AB008F28C7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9547C372231756AB008F28C7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9547C376231756AC008F28C7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9547C377231756AC008F28C7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9547C37A231756AC008F28C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9547C37B231756AC008F28C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9547C37D231756AC008F28C7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PJ28SKB4DT;
+				INFOPLIST_FILE = Spectrum/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TokenResearch.info.Spectrum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		9547C37E231756AC008F28C7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PJ28SKB4DT;
+				INFOPLIST_FILE = Spectrum/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = TokenResearch.info.Spectrum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9547C35F231756AB008F28C7 /* Build configuration list for PBXProject "Spectrum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9547C37A231756AC008F28C7 /* Debug */,
+				9547C37B231756AC008F28C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9547C37C231756AC008F28C7 /* Build configuration list for PBXNativeTarget "Spectrum" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9547C37D231756AC008F28C7 /* Debug */,
+				9547C37E231756AC008F28C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9547C35C231756AB008F28C7 /* Project object */;
+}
