@@ -39,7 +39,8 @@ class SpectrumShape : SKShapeNode {
    // let inline : SKShapeNode
     let pulseSpeedInterval = 1.0
     let pulseSizeScale = CGFloat(1.5)
-    var controlDelegate : ControlDelegate?
+    
+    //var controlDelegate : ControlDelegate?
     
     //--------inits and set up funcs below------------------
     //todo this only does circles

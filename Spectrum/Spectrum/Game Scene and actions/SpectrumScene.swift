@@ -28,7 +28,7 @@ enum State{
 class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
-    var gameField = [GKEntity]()
+    var gameField = [SpawnerEntity]()
     
     private var state : State!{didSet{state.changedState(for: self)}}
     
@@ -125,7 +125,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
             controlDelegate!.touchesBegan(touches: touches)}
         
             if (isTrue){
-                controlDelegate = gameField[0] as? ControlDelegate
+                controlDelegate = gameField[0].controlComponent
                 
             } else {
                 controlDelegate = self

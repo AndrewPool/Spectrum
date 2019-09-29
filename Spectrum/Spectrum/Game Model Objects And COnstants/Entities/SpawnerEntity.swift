@@ -16,16 +16,18 @@ todo the buddies ned to be entities too, right now the are just controlled by th
  */
 
 //right now it is only good for a circle
-class SpawnerEntity: GKEntity, ControlDelegate{
+class SpawnerEntity: GKEntity{
     
     override var description: String{
-        return "\(player.name)'s Spawner"
+        
+        guard let name = (component(ofType: PlayerComponent.self)?.player.name) else {return "failed description"}
+        return name + "'s Spawner"
     }
   
-    //grab a weak copy of it's parent for putting things in
+    //grab a weak pointers for the sweet cashe value
     weak var scene: SpectrumScene!
-    
-    
+    weak var playerComponent: PlayerComponent!
+    weak var controlComponent: ControlComponent?
     
     //here are some properties
     
@@ -50,7 +52,7 @@ class SpawnerEntity: GKEntity, ControlDelegate{
     //
     private var shape = Shape.Circle
     
-    private var player = Player()
+   
     
     private var spawnCountdown = 0.0
     
@@ -65,19 +67,31 @@ class SpawnerEntity: GKEntity, ControlDelegate{
     //this becomes the designated() init
     init(scene:SpectrumScene, player: Player) {
         
+   
         self.scene = scene
         
         spawner = SpectrumShape(shape: shape, player:player, size:Constants.Spawner.size)
         
+              
+           
+           spawner.position.x = CGFloat(100)
+           
+           spawner.setUpCollisionAsSpawner()
+          
+        
+          
+         
+           spawner.addToScene(scene)
       //  focus = SpectrumShape(shape: shape, player: player, size: Constants.Spawner.Focus.size)
         super.init()
         
-        spawner.position.x = CGFloat(100)
-        
-        spawner.setUpCollisionAsSpawner()
-        spawner.controlDelegate = self
-        print(spawner.controlDelegate as! CustomStringConvertible)
-        spawner.addToScene(scene)
+        let playerComponent = PlayerComponent(player: player)
+           addComponent(playerComponent)
+           
+        let controlComponentStart  = ControlComponent(controler: self)
+                addComponent(controlComponentStart)
+                controlComponent=controlComponentStart
+     
      
        // focus.addToScene(scene)
     }
@@ -107,7 +121,9 @@ class SpawnerEntity: GKEntity, ControlDelegate{
         
     }
     private func spawnBuddy(){
-        let buddy = SpectrumShape(shape: shape, player: player , size: Constants.Buddy.size )
+        
+        let buddy = SpectrumShape(shape: shape, player: component(ofType: PlayerComponent.self)!.player , size: Constants.Buddy.size )
+        
         buddies.append(buddy)
         buddy.position = spawner.position
           buddy.setUpCollisionAsBuddy()
@@ -118,26 +134,5 @@ class SpawnerEntity: GKEntity, ControlDelegate{
    
    //---collision and shit
 
-    
-    // -------------------COntrol Delegate Functions, and helper functions--------------------
-      
-      func touchesBegan(touches: Set<UITouch>) {
-          
-      }
-      
-      func touchesMoved(touches: Set<UITouch>) {
-          
-      }
-      
-      func touchesEnded(touches: Set<UITouch>) {
-        print("Spawner Control Delegate happened")
-       // scene.controlDelegate = self
-      }
-      
-      func touchesCancelled(touches: Set<UITouch>) {
-          
-      }
-      
-
-    // ------------------Control Delegate Functions, and helper FUncstoins above------------------------
+  
 }

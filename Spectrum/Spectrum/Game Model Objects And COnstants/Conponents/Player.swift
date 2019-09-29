@@ -10,7 +10,7 @@
 import UIKit
 import GameKit
 
-class PlayerConponent: GKComponent{
+class PlayerComponent: GKComponent{
     
     var player : Player
     
