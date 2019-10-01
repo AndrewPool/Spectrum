@@ -31,6 +31,12 @@ struct Player{
     let computer:Bool
     let name:String
     let color:UIColor
+    init(name:String, key:PhysicsKey, color:UIColor){
+        self.color = color
+        computer = false
+        self.name = name
+        physicsKey = key
+    }
     init(){
         color = UIColor.orange
         computer = true
@@ -38,10 +44,7 @@ struct Player{
         name = Constants.computerNames.randomElement()!
     }
     init(name:String, key:PhysicsKey){
-        color = UIColor.blue
-        computer = false
-        self.name = name
-        physicsKey = key
+        self.init(name:name, key:key, color:UIColor.blue)
     }
     
 

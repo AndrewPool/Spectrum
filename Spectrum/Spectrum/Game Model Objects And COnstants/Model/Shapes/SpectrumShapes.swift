@@ -37,15 +37,7 @@ class SpectrumShape : SKShapeNode {
     let strokeWidth = 5
     let outlineColor = UIColor.red
     let inlineColor = UIColor.purple
-    //outline is the circle
-   // let outline : SKShapeNode
-    
-   // let inline : SKShapeNode
-    let pulseSpeedInterval = 1.0
-    let pulseSizeScale = CGFloat(1.5)
-    
-    //var controlDelegate : ControlDelegate?
-    
+
     //--------inits and set up funcs below------------------
     //todo this only does circles
     init(shape: Shape, player:Player, size:Int){
@@ -65,6 +57,7 @@ class SpectrumShape : SKShapeNode {
         fillColor = player.color
         strokeColor = inlineColor
         isUserInteractionEnabled = false// looks like this needs to be in the init
+        
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
         player.physicsKey.setupCollisionParamaters(buddy:physicsBody!)
         
@@ -82,7 +75,7 @@ class SpectrumShape : SKShapeNode {
     }
     func setUpCollisionAsSpawner(){
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
-          
+        physicsBody!.isDynamic = false
         player.physicsKey.setupCollisionParamaters(spawner:physicsBody!)
         
         
@@ -106,8 +99,8 @@ class SpectrumShape : SKShapeNode {
     
     func startPulseAction(){
         //first action
-        let pulse2 = SKAction.scale(to: pulseSizeScale, duration: pulseSpeedInterval)
-        let pulse3 = SKAction.scale(to: CGFloat(1), duration: pulseSpeedInterval)
+        let pulse2 = SKAction.scale(to: Constants.Spawner.pulseSizeScale, duration: Constants.Spawner.pulseSpeedInterval * 0.8)
+        let pulse3 = SKAction.scale(to: CGFloat(1), duration: Constants.Spawner.pulseSpeedInterval * 0.2)
         let smallThenBigSequence = SKAction.sequence([pulse2,pulse3])
         let smallThenBigSequenceForever = SKAction.repeatForever(smallThenBigSequence)
         run(smallThenBigSequenceForever)//and back again forever

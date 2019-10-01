@@ -36,7 +36,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     var player = Player(name: "andy", key: PhysicsKey.player1)
     
-    var player2 = Player(name: "jamie", key: PhysicsKey.player2)
+    var player2 = Player(name: "jamie", key: PhysicsKey.player2, color:UIColor.yellow)
     //always set this at the init! since this game doesn't delete things that can be delagates, I will not have to do any debugging aobut this latter
     // first real time doing an optional
     
@@ -94,22 +94,32 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
     //----------------set up game below----------------
-       func setUpGame(){
-           print("setting up game")
-           label?.run(SKAction.fadeOut(withDuration: 5))
-           controlDelegate = self
+    func setUpGame(){
+        print("setting up game")
+        label?.run(SKAction.fadeOut(withDuration: 5))
+        controlDelegate = self
         addSpawner(at: CGPoint(x: 100, y: 100))
-       }
-       
-       //gets called at set up game()\
+        addSpawner(at: CGPoint(x:-100, y: -100))
+        addSpawner2(at: CGPoint(x:100, y:-100))
+        addSpawner2(at: CGPoint(x:-100, y:100))
+    }
+    
+    //gets called at set up game()\
     private func addSpawner(at location:CGPoint){
-           
+        
         let spawner = SpawnerEntity(scene: self, player: player, location: location)
         spawner.setUp()
-           gameField.append(spawner)
-           
-       }
-       
+        gameField.append(spawner)
+        
+        
+    }
+    private func addSpawner2(at location:CGPoint){
+        
+        let spawner = SpawnerEntity(scene: self, player: player2, location: location)
+        spawner.setUp()
+        gameField.append(spawner)
+        
+    }
     
     //----------------  game set up stuff above----------------
     

@@ -9,6 +9,7 @@
 import GameKit
 
 class ControlComponent: GKComponent,ControlDelegate{
+    
     var selected: Bool = false
     {didSet{   if(selected){
        

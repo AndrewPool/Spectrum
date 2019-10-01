@@ -24,7 +24,10 @@ struct Constants{
        }
       
     struct Spawner {
-        static let spawnInterval = 2.0;
+        static let pulseSpeedInterval = 1.0
+        static let pulseSizeScale = CGFloat(1.3)
+        
+        //static let spawnInterval = 2.0;
         static let size = 100;
         struct Focus{
                static let size = 110

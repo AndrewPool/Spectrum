@@ -39,7 +39,7 @@ class SpawnerEntity: GKEntity{
     //this is entity stuff, location and buddies
     var focus = CGPoint(x:100,y:100)
 
-    var buddies = [SpectrumShape]()
+    var buddies = [BuddyEntity]()
     
     
     //
@@ -97,28 +97,5 @@ class SpawnerEntity: GKEntity{
         
         //tryToSpawn(deltaTime:seconds)
     }
-//
-//    private func tryToSpawn(deltaTime: TimeInterval){
-//        if (spawnCountdown <= 0){
-//            spawnBuddy()
-//           spawnCountdown += Constants.Spawner.spawnInterval
-//        }
-//        spawnCountdown -= deltaTime
-//
-//    }
-//    private func spawnBuddy(){
-//
-//        let buddy = SpectrumShape(shape: shape, player: component(ofType: PlayerComponent.self)!.player , size: Constants.Buddy.size )
-//
-//        buddies.append(buddy)
-//        buddy.position = spawnerComponent.shapeNode.position
-//        buddy.setUpCollisionAsBuddy()
-//        buddy.addToScene(scene)
-//        buddy.startMoveAction(to: focus)
-//
-//    }
-//
-   //---collision and shit
 
-  
 }

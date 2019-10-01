@@ -12,6 +12,7 @@ import GameKit
 class StartUpDelegate:ControlDelegate{
     
     var selected = false
+   
     weak var gameScene : SpectrumScene!
     
     init(scene:SpectrumScene){
