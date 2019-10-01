@@ -10,15 +10,7 @@ import GameKit
 
 class GameComponent: GKComponent{
     
-    var hp = 10{
-        didSet{
-            if hp<0{
-                if let deleteable = entity as? Deletable{
-                    deleteable.delete()
-                }
-            }
-        }
-    }
+    var hp = 10
     
     func getStatsForCollision()->Int{
         return hp
@@ -28,5 +20,11 @@ class GameComponent: GKComponent{
     func hit(attackValue: Int){
         hp -= attackValue
     }
-   
+    override func update(deltaTime seconds: TimeInterval) {
+        if hp<0{
+            if let deleteable = entity as? Deletable{
+                deleteable.delete()
+            }
+        }
+    }
 }

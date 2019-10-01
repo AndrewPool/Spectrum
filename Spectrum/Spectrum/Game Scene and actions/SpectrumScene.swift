@@ -31,6 +31,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     var gameField = [SpawnerEntity]()
     
     let spawningSystem = GKComponentSystem(componentClass: SpawnerComponent.self)
+    let gameSystem = GKComponentSystem(componentClass: GameComponent.self)
     
     private var state : State!{didSet{state.changedState(for: self)}}
     
@@ -172,7 +173,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     func touchesMoved(touches: Set<UITouch>) {
         
     }
-    
+    //TODO
     func touchesEnded(touches: Set<UITouch>) {
         controlDelegate = gameField[0].controlComponent
           
@@ -218,7 +219,11 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("collission happened")
+        let  a = contact.bodyA.node as! SpectrumShape
+        let  b = contact.bodyB.node as! SpectrumShape
+        a.gameComponent!.hit(attackValue: b.gameComponent!.hp)
+        b.gameComponent!.hit(attackValue: a.gameComponent!.hp)
+        
     }
     
     

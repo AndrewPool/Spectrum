@@ -46,8 +46,5 @@ struct Player{
     init(name:String, key:PhysicsKey){
         self.init(name:name, key:key, color:UIColor.blue)
     }
-    
 
-    
-    
 }

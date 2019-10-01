@@ -11,7 +11,7 @@ class BuddyComponent: GKComponent{
     
     let shapeNode : SpectrumShape
     weak var buddyEntity : BuddyEntity!//must set up imediatly
-
+  //  weak var gameComponent : GameComponent
     //-------------update and helpers----------------------
     
     //------------init and set up-----------------

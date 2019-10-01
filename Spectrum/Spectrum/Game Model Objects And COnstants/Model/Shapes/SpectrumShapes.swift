@@ -37,6 +37,8 @@ class SpectrumShape : SKShapeNode {
     let strokeWidth = 5
     let outlineColor = UIColor.red
     let inlineColor = UIColor.purple
+    
+    weak var gameComponent : GameComponent?
 
     //--------inits and set up funcs below------------------
     //todo this only does circles

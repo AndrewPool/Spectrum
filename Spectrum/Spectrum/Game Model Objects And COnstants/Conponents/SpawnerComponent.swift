@@ -11,8 +11,11 @@ import GameKit
 class SpawnerComponent: GKComponent{
     
     let shapeNode : SpectrumShape
+    
+    //sweet cache value
     weak var spawnerEntity : SpawnerEntity!
     weak var scene : SpectrumScene!
+    weak var gameSystem : GKComponentSystem<GameComponent>!
     
     private var spawnCountdown = 0.0
     
@@ -40,12 +43,15 @@ class SpawnerComponent: GKComponent{
 //
         let buddyComponent = BuddyComponent(shape: shapeNode.shape, player: spawnerEntity!.playerComponent.player, size: Constants.Buddy.size , scene: scene)
 
+        let gameComponent = GameComponent()
+        buddy.addComponent(gameComponent)
+        gameSystem.addComponent(gameComponent)
         
         buddyComponent.shapeNode.position = shapeNode.position
         buddyComponent.shapeNode.setUpCollisionAsBuddy()
         buddyComponent.shapeNode.addToScene(spawnerEntity!.scene)
         buddyComponent.shapeNode.startMoveAction(to: spawnerEntity!.focus)
-        
+        buddyComponent.shapeNode.gameComponent = gameComponent
         buddy.addComponent(buddyComponent)
         
     }

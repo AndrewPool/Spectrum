@@ -24,23 +24,25 @@ class SpawnerEntity: GKEntity{
         return name + "'s Spawner"
     }
   
-    //grab a weak pointers for the sweet cashe value
+    //grab weak pointers for the sweet cashe value
+    
     //parent scene
     weak var scene: SpectrumScene!
-    //internal components
-    weak var playerComponent: PlayerComponent!
-    weak var controlComponent: ControlComponent?
-    weak var spawnerComponent: SpawnerComponent!
-  
-   
-   // var spawner : SpectrumShape
     
+    //internal components that alwasys exist
+    weak var playerComponent: PlayerComponent!//there is a neutral player
+    weak var spawnerComponent: SpawnerComponent!
+    //internal components that might exist
+    weak var controlComponent: ControlComponent?
+    
+    
+    //to be componented
+    
+    var buddies = [BuddyEntity]()
     
     //this is entity stuff, location and buddies
     var focus = CGPoint(x:100,y:100)
 
-    var buddies = [BuddyEntity]()
-    
     
     //
     private var shape = Shape.Circle
@@ -64,7 +66,7 @@ class SpawnerEntity: GKEntity{
         spawnerComponent.shapeNode.position = position
         spawnerComponent.shapeNode.addToScene(scene)
         scene.spawningSystem.addComponent(spawnerComponent)
-        
+        spawnerComponent.gameSystem = (scene.gameSystem as! GKComponentSystem<GameComponent>)
         
         
         let playerComponent = PlayerComponent(player: player)

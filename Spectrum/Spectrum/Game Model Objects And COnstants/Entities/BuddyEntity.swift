@@ -8,13 +8,15 @@
 
 import GameKit
 
-class BuddyEntity: GKEntity{
+class BuddyEntity: GKEntity, Deletable{
     
     weak var owner : SpawnerEntity!
     
     init(owner:SpawnerEntity){
         super.init()
         self.owner = owner
+        
+      
     }
     
     required init?(coder: NSCoder) {
@@ -22,7 +24,7 @@ class BuddyEntity: GKEntity{
     }
     
     func delete(){
-        
+        print("delete")
     }
 }
 
