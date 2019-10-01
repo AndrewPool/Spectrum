@@ -30,21 +30,26 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     var gameField = [SpawnerEntity]()
     
+    let spawningSystem = GKComponentSystem(componentClass: SpawnerComponent.self)
+    
     private var state : State!{didSet{state.changedState(for: self)}}
     
-    var player = Player()
+    var player = Player(name: "andy", key: PhysicsKey.player1)
     
-    
+    var player2 = Player(name: "jamie", key: PhysicsKey.player2)
     //always set this at the init! since this game doesn't delete things that can be delagates, I will not have to do any debugging aobut this latter
     // first real time doing an optional
     
     //this toggles the selected property of ControlDelegate thus letting it know to stop doing whatever it was doing as focused, and letting the new one to start
-    var controlDelegate : ControlDelegate? {
+    var controlDelegate : ControlDelegate! {
         willSet{if controlDelegate != nil{controlDelegate?.selected = false}}
         didSet{controlDelegate!.selected = true}}
     
     //since this can be it's on delegate as it functions as the root controller, it has it's own delegate properties
     var selected = false {didSet{toggleSelected(isTrue:selected)}}
+    
+    
+    
     
     
     private var lastUpdateTime : TimeInterval = 0
@@ -93,13 +98,14 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
            print("setting up game")
            label?.run(SKAction.fadeOut(withDuration: 5))
            controlDelegate = self
-           addSpawner()
+        addSpawner(at: CGPoint(x: 100, y: 100))
        }
        
        //gets called at set up game()\
-       private func addSpawner(){
-           let spawner = SpawnerEntity(scene: self, player: player)
+    private func addSpawner(at location:CGPoint){
            
+        let spawner = SpawnerEntity(scene: self, player: player, location: location)
+        spawner.setUp()
            gameField.append(spawner)
            
        }
@@ -124,14 +130,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         if (controlDelegate != nil){
             controlDelegate!.touchesBegan(touches: touches)}
         
-            if (isTrue){
-                controlDelegate = gameField[0].controlComponent
-                
-            } else {
-                controlDelegate = self
-            }
-             isTrue =   !isTrue
-        
+      
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -157,11 +156,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     func touchesBegan(touches: Set<UITouch>) {
       
         print("spectrum scene self control delegate touchesBegan()")
-       // guard let firstContact = touches.first else {return}
-        guard let touch = touches.first else {return}
-        
-        
-    
+     
     }
     
     func touchesMoved(touches: Set<UITouch>) {
@@ -169,7 +164,8 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     }
     
     func touchesEnded(touches: Set<UITouch>) {
-        
+        controlDelegate = gameField[0].controlComponent
+          
     }
     
     func touchesCancelled(touches: Set<UITouch>) {
@@ -200,11 +196,32 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         }
         // Calculate time since last update
        // let dt = currentTime - self.lastUpdateTime
-       
+        spawningSystem.update(deltaTime: deltaTime)
+        
        
         self.lastUpdateTime = currentTime
     }
     //-------------update above-------------------
+    
+    
+    //-------------Contact Delegate--------------//
+    
+    
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("collission happened")
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     //selected sets up the focus emmitter, or it doesn't
@@ -224,7 +241,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         
         left.particleColor = player.color
         left.particleColorSequence = nil
-        left.position.x = -CGFloat.screenX/2
+        left.position.x = -frame.maxX
         
         focusEmitterComposite.addChild(left)
         
@@ -232,7 +249,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         
         right.particleColor = player.color
         right.particleColorSequence = nil
-        right.position.x = CGFloat.screenX/2
+        right.position.x = frame.maxX
         
         focusEmitterComposite.addChild(right)
         
@@ -240,7 +257,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         
         top.particleColor = player.color
         top.particleColorSequence = nil
-        top.position.y = CGFloat.screenY/2
+        top.position.y = frame.maxY
         
         focusEmitterComposite.addChild(top)
 
@@ -248,7 +265,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
 
         bottom.particleColor = player.color
         bottom.particleColorSequence = nil
-        bottom.position.y = -CGFloat.screenY/2
+        bottom.position.y = -frame.maxY
 
         focusEmitterComposite.addChild(bottom)
 

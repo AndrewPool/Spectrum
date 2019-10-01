@@ -17,33 +17,26 @@ todo the buddies ned to be entities too, right now the are just controlled by th
 
 //right now it is only good for a circle
 class SpawnerEntity: GKEntity{
-    
+  
+    //here are some properties
     override var description: String{
-        
         guard let name = (component(ofType: PlayerComponent.self)?.player.name) else {return "failed description"}
         return name + "'s Spawner"
     }
   
     //grab a weak pointers for the sweet cashe value
+    //parent scene
     weak var scene: SpectrumScene!
+    //internal components
     weak var playerComponent: PlayerComponent!
     weak var controlComponent: ControlComponent?
+    weak var spawnerComponent: SpawnerComponent!
+  
+   
+   // var spawner : SpectrumShape
     
-    //here are some properties
     
-    //this is for the ControlDelegate
-    var selected = false {didSet{   if(selected){ scene.addChild(focusFire) } else{focusFire.removeFromParent()}}  }
-    
-    //here are the various SKNodes
-    lazy var focusFire : SKEmitterNode = {
-        let focusFire = SKEmitterNode(fileNamed: "FocusFire.sks")!
-        focusFire.targetNode = spawner
-        focusFire.name = "Focus Fire"
-        return focusFire
-
-    }()
-    var spawner : SpectrumShape
-    
+    //this is entity stuff, location and buddies
     var focus = CGPoint(x:100,y:100)
 
     var buddies = [SpectrumShape]()
@@ -53,47 +46,37 @@ class SpawnerEntity: GKEntity{
     private var shape = Shape.Circle
     
    
+    //---------------------init and set up
     
-    private var spawnCountdown = 0.0
-    
- 
-    //var spawnBuddy : (_ player:Player)->Void
-    
-    
-    
-    //---------------------init and set up functions------------------------
-    
-    
-    //this becomes the designated() init
-    init(scene:SpectrumScene, player: Player) {
+    //this becomes the designated init()
+    init(scene:SpectrumScene, player: Player, location: CGPoint) {
         
-   
+        let position = location
         self.scene = scene
         
-        spawner = SpectrumShape(shape: shape, player:player, size:Constants.Spawner.size)
-        
-              
-           
-           spawner.position.x = CGFloat(100)
-           
-           spawner.setUpCollisionAsSpawner()
-          
-        
-          
-         
-           spawner.addToScene(scene)
-      //  focus = SpectrumShape(shape: shape, player: player, size: Constants.Spawner.Focus.size)
+        //  focus = SpectrumShape(shape: shape, player: player, size: Constants.Spawner.Focus.size)
         super.init()
         
+        
+        let spawnerComponent = SpawnerComponent(shape: shape, player:player, size:Constants.Spawner.size, scene: scene)
+        addComponent(spawnerComponent)
+        self.spawnerComponent = spawnerComponent
+        spawnerComponent.shapeNode.position = position
+        spawnerComponent.shapeNode.addToScene(scene)
+        scene.spawningSystem.addComponent(spawnerComponent)
+        
+        
+        
         let playerComponent = PlayerComponent(player: player)
-           addComponent(playerComponent)
-           
+        addComponent(playerComponent)
+        self.playerComponent = playerComponent
+        
         let controlComponentStart  = ControlComponent(controler: self)
-                addComponent(controlComponentStart)
-                controlComponent=controlComponentStart
-     
-     
-       // focus.addToScene(scene)
+        addComponent(controlComponentStart)
+        controlComponent=controlComponentStart
+        
+        
+        // focus.addToScene(scene)
     }
    
  
@@ -101,6 +84,9 @@ class SpawnerEntity: GKEntity{
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setUp(){
+        spawnerComponent.setEntity()
+    }
     
        //-----------------init and setup above
   
@@ -109,29 +95,29 @@ class SpawnerEntity: GKEntity{
     //-------------update and helpers----------------------
     override func update(deltaTime seconds: TimeInterval) {
         
-        tryToSpawn(deltaTime:seconds)
+        //tryToSpawn(deltaTime:seconds)
     }
-    
-    private func tryToSpawn(deltaTime: TimeInterval){
-        if (spawnCountdown <= 0){
-            spawnBuddy()
-           spawnCountdown += Constants.Spawner.spawnInterval
-        }
-        spawnCountdown -= deltaTime
-        
-    }
-    private func spawnBuddy(){
-        
-        let buddy = SpectrumShape(shape: shape, player: component(ofType: PlayerComponent.self)!.player , size: Constants.Buddy.size )
-        
-        buddies.append(buddy)
-        buddy.position = spawner.position
-          buddy.setUpCollisionAsBuddy()
-        buddy.addToScene(scene)
-        buddy.startMoveAction(to: focus)
-        
-    }
-   
+//
+//    private func tryToSpawn(deltaTime: TimeInterval){
+//        if (spawnCountdown <= 0){
+//            spawnBuddy()
+//           spawnCountdown += Constants.Spawner.spawnInterval
+//        }
+//        spawnCountdown -= deltaTime
+//
+//    }
+//    private func spawnBuddy(){
+//
+//        let buddy = SpectrumShape(shape: shape, player: component(ofType: PlayerComponent.self)!.player , size: Constants.Buddy.size )
+//
+//        buddies.append(buddy)
+//        buddy.position = spawnerComponent.shapeNode.position
+//        buddy.setUpCollisionAsBuddy()
+//        buddy.addToScene(scene)
+//        buddy.startMoveAction(to: focus)
+//
+//    }
+//
    //---collision and shit
 
   

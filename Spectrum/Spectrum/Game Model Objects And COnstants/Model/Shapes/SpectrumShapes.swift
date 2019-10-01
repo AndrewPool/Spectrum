@@ -16,7 +16,11 @@ enum Shape{
     func getPath( size:Int)->CGPath{
         
         switch (self){
-        case .Circle: return CGPath(ellipseIn: CGRect(x: -size/2, y: -size/2, width: size, height: size), transform: nil)}}}
+        case .Circle: return CGPath(ellipseIn: CGRect(x: -size/2, y: -size/2, width: size, height: size), transform: nil)}
+        
+    }
+    
+}
 
 //this is the shape with collision, player, color, animation setup and shit
 
@@ -29,7 +33,7 @@ class SpectrumShape : SKShapeNode {
    // private var position = CGPoint(x: 100, y: 100)
     private var player:Player
     private var size:Int
-    //shape color and stuff
+    //shape color and stuff`
     let strokeWidth = 5
     let outlineColor = UIColor.red
     let inlineColor = UIColor.purple
@@ -46,8 +50,7 @@ class SpectrumShape : SKShapeNode {
     //todo this only does circles
     init(shape: Shape, player:Player, size:Int){
         
-        print(Constants.computerNames.first!)
-        
+       
         self.shape = shape
         self.player = player
         self.size = size
@@ -57,7 +60,7 @@ class SpectrumShape : SKShapeNode {
         super.init()
         
         path = shape.getPath(size: size)
-      
+        zPosition = CGFloat(Constants.Layers.player)
         lineWidth = CGFloat(strokeWidth)
         fillColor = player.color
         strokeColor = inlineColor
@@ -99,18 +102,7 @@ class SpectrumShape : SKShapeNode {
     }
     
     //----------------init and set up funcs above
-   
-    func setFocusVisuals(on:Bool){
-       
-    }
-    
-    
-    
-    //
-    func startMoveToActions(){
-        
-    }
-    
+
     
     func startPulseAction(){
         //first action
@@ -122,14 +114,7 @@ class SpectrumShape : SKShapeNode {
     }
 
     func startMoveAction(to:CGPoint){
-        removeAction(forKey: "move action")
-        let speed = 1
-        let moveAction = SKAction.move(by: CGVector(dx: to.x, dy: to.y), duration: TimeInterval(speed))
-        run(moveAction,withKey: "move action")
+        physicsBody?.applyForce(CGVector(dx: (to.x-position.x), dy: (to.y-position.y)))
     }
     
-    //this is not used as a delegate, this is for when the main screen is selecting the context, so check the context
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-    
-    }
 }

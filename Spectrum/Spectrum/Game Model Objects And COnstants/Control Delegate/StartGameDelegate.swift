@@ -12,7 +12,7 @@ import GameKit
 class StartUpDelegate:ControlDelegate{
     
     var selected = false
-    weak var gameScene : SpectrumScene?
+    weak var gameScene : SpectrumScene!
     
     init(scene:SpectrumScene){
         self.gameScene = scene
@@ -20,7 +20,7 @@ class StartUpDelegate:ControlDelegate{
     
     func touchesBegan(touches: Set<UITouch>) {
       print("touchesBegan Delegate called")
-        gameScene!.setUpGame()
+        gameScene.setUpGame()
                 
     }
     

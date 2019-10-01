@@ -16,15 +16,15 @@
 		9547C373231756AB008F28C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9547C371231756AB008F28C7 /* Main.storyboard */; };
 		9547C375231756AC008F28C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9547C374231756AC008F28C7 /* Assets.xcassets */; };
 		9547C378231756AC008F28C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9547C376231756AC008F28C7 /* LaunchScreen.storyboard */; };
+		9564F6A32342E89F00420557 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564F6A22342E89F00420557 /* Constants.swift */; };
 		956FC662234031ED001DC850 /* SpawnerControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC661234031ED001DC850 /* SpawnerControlDelegate.swift */; };
-		956FC6642340357A001DC850 /* VisualComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC6632340357A001DC850 /* VisualComponent.swift */; };
+		956FC6642340357A001DC850 /* SpawnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC6632340357A001DC850 /* SpawnerComponent.swift */; };
 		956FC6662340388E001DC850 /* ControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC6652340388E001DC850 /* ControlComponent.swift */; };
 		9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79D2339647600615E7D /* ControlDelagate.swift */; };
 		9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79F233987A300615E7D /* StartGameDelegate.swift */; };
 		95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C273FC232D713500DDDD58 /* SpectrumShapes.swift */; };
 		95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB96062329810E007579EF /* SpawnerEntity.swift */; };
 		95DB960D232983BB007579EF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960C232983BB007579EF /* Player.swift */; };
-		95DB961023298577007579EF /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960F23298577007579EF /* Constants.swift */; };
 		95DB96142329B41F007579EF /* ColorStars.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 95DB96122329B41F007579EF /* ColorStars.scnp */; };
 		95DB96152329B41F007579EF /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 95DB96132329B41F007579EF /* star.png */; };
 		95FBB6D2233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */; };
@@ -47,15 +47,15 @@
 		9547C374231756AC008F28C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9547C377231756AC008F28C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9547C379231756AC008F28C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9564F6A22342E89F00420557 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../Constants.swift; sourceTree = "<group>"; };
 		956FC661234031ED001DC850 /* SpawnerControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerControlDelegate.swift; sourceTree = "<group>"; };
-		956FC6632340357A001DC850 /* VisualComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualComponent.swift; sourceTree = "<group>"; };
+		956FC6632340357A001DC850 /* SpawnerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerComponent.swift; sourceTree = "<group>"; };
 		956FC6652340388E001DC850 /* ControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlComponent.swift; sourceTree = "<group>"; };
 		9576D79D2339647600615E7D /* ControlDelagate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDelagate.swift; sourceTree = "<group>"; };
 		9576D79F233987A300615E7D /* StartGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameDelegate.swift; sourceTree = "<group>"; };
 		95C273FC232D713500DDDD58 /* SpectrumShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumShapes.swift; sourceTree = "<group>"; };
 		95DB96062329810E007579EF /* SpawnerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerEntity.swift; sourceTree = "<group>"; };
 		95DB960C232983BB007579EF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		95DB960F23298577007579EF /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		95DB96122329B41F007579EF /* ColorStars.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ColorStars.scnp; sourceTree = "<group>"; };
 		95DB96132329B41F007579EF /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
 		95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeftSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
@@ -90,6 +90,7 @@
 			children = (
 				95DB960C232983BB007579EF /* Player.swift */,
 				956FC6652340388E001DC850 /* ControlComponent.swift */,
+				956FC6632340357A001DC850 /* SpawnerComponent.swift */,
 			);
 			path = Conponents;
 			sourceTree = "<group>";
@@ -97,6 +98,8 @@
 		95058D40234009800094C359 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				95DB960E23298544007579EF /* Game Constants */,
+				95188400232D5C830018CF51 /* Shapes */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -105,7 +108,6 @@
 			isa = PBXGroup;
 			children = (
 				95C273FC232D713500DDDD58 /* SpectrumShapes.swift */,
-				956FC6632340357A001DC850 /* VisualComponent.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -165,8 +167,6 @@
 				95058D40234009800094C359 /* Model */,
 				95058D3E2340093B0094C359 /* Entities */,
 				95058D3F234009480094C359 /* Conponents */,
-				95188400232D5C830018CF51 /* Shapes */,
-				95DB960E23298544007579EF /* Game Constants */,
 				956FC66023403177001DC850 /* Control Delegate */,
 			);
 			path = "Game Model Objects And COnstants";
@@ -195,7 +195,7 @@
 		95DB960E23298544007579EF /* Game Constants */ = {
 			isa = PBXGroup;
 			children = (
-				95DB960F23298577007579EF /* Constants.swift */,
+				9564F6A22342E89F00420557 /* Constants.swift */,
 			);
 			path = "Game Constants";
 			sourceTree = "<group>";
@@ -322,8 +322,8 @@
 				95DB960D232983BB007579EF /* Player.swift in Sources */,
 				951E057B232C1ED3003786D1 /* CGFloat Extensions.swift in Sources */,
 				95117A26232EEA93004DCC12 /* SKPhysicsWorld.swift in Sources */,
-				956FC6642340357A001DC850 /* VisualComponent.swift in Sources */,
-				95DB961023298577007579EF /* Constants.swift in Sources */,
+				9564F6A32342E89F00420557 /* Constants.swift in Sources */,
+				956FC6642340357A001DC850 /* SpawnerComponent.swift in Sources */,
 				956FC662234031ED001DC850 /* SpawnerControlDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
