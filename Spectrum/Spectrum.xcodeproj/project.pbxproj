@@ -16,7 +16,7 @@
 		9547C373231756AB008F28C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9547C371231756AB008F28C7 /* Main.storyboard */; };
 		9547C375231756AC008F28C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9547C374231756AC008F28C7 /* Assets.xcassets */; };
 		9547C378231756AC008F28C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9547C376231756AC008F28C7 /* LaunchScreen.storyboard */; };
-		9564F6A32342E89F00420557 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564F6A22342E89F00420557 /* Constants.swift */; };
+		9564F6A52342EA6300420557 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9564F6A42342EA6300420557 /* Constants.swift */; };
 		956FC662234031ED001DC850 /* SpawnerControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC661234031ED001DC850 /* SpawnerControlDelegate.swift */; };
 		956FC6642340357A001DC850 /* SpawnerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC6632340357A001DC850 /* SpawnerComponent.swift */; };
 		956FC6662340388E001DC850 /* ControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC6652340388E001DC850 /* ControlComponent.swift */; };
@@ -47,7 +47,7 @@
 		9547C374231756AC008F28C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9547C377231756AC008F28C7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9547C379231756AC008F28C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9564F6A22342E89F00420557 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = ../../../../../Constants.swift; sourceTree = "<group>"; };
+		9564F6A42342EA6300420557 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		956FC661234031ED001DC850 /* SpawnerControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerControlDelegate.swift; sourceTree = "<group>"; };
 		956FC6632340357A001DC850 /* SpawnerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerComponent.swift; sourceTree = "<group>"; };
 		956FC6652340388E001DC850 /* ControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlComponent.swift; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 		95DB960E23298544007579EF /* Game Constants */ = {
 			isa = PBXGroup;
 			children = (
-				9564F6A22342E89F00420557 /* Constants.swift */,
+				9564F6A42342EA6300420557 /* Constants.swift */,
 			);
 			path = "Game Constants";
 			sourceTree = "<group>";
@@ -322,7 +322,7 @@
 				95DB960D232983BB007579EF /* Player.swift in Sources */,
 				951E057B232C1ED3003786D1 /* CGFloat Extensions.swift in Sources */,
 				95117A26232EEA93004DCC12 /* SKPhysicsWorld.swift in Sources */,
-				9564F6A32342E89F00420557 /* Constants.swift in Sources */,
+				9564F6A52342EA6300420557 /* Constants.swift in Sources */,
 				956FC6642340357A001DC850 /* SpawnerComponent.swift in Sources */,
 				956FC662234031ED001DC850 /* SpawnerControlDelegate.swift in Sources */,
 			);
