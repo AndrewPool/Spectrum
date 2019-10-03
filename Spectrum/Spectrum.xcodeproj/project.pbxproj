@@ -94,7 +94,7 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		95058D3F234009480094C359 /* Conponents */ = {
+		95058D3F234009480094C359 /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				95DB960C232983BB007579EF /* Player.swift */,
@@ -103,7 +103,7 @@
 				952E97852342F60F0086F940 /* GameComponent.swift */,
 				952E978B2342FE9A0086F940 /* BuddyComponent.swift */,
 			);
-			path = Conponents;
+			path = Components;
 			sourceTree = "<group>";
 		};
 		95058D40234009800094C359 /* Model */ = {
@@ -154,7 +154,7 @@
 			children = (
 				95DB960523297C09007579EF /* App Control */,
 				951E0579232C1EBC003786D1 /* Extensions */,
-				95DB960323297B54007579EF /* Game Model Objects And COnstants */,
+				95DB960323297B54007579EF /* Game Model Objects And Constants */,
 				95DB960423297B68007579EF /* Game Scene and actions */,
 				95DB96112329B3D0007579EF /* Emitters */,
 				9547C374231756AC008F28C7 /* Assets.xcassets */,
@@ -173,15 +173,15 @@
 			path = "Control Delegate";
 			sourceTree = "<group>";
 		};
-		95DB960323297B54007579EF /* Game Model Objects And COnstants */ = {
+		95DB960323297B54007579EF /* Game Model Objects And Constants */ = {
 			isa = PBXGroup;
 			children = (
 				95058D40234009800094C359 /* Model */,
 				95058D3E2340093B0094C359 /* Entities */,
-				95058D3F234009480094C359 /* Conponents */,
+				95058D3F234009480094C359 /* Components */,
 				956FC66023403177001DC850 /* Control Delegate */,
 			);
-			path = "Game Model Objects And COnstants";
+			path = "Game Model Objects And Constants";
 			sourceTree = "<group>";
 		};
 		95DB960423297B68007579EF /* Game Scene and actions */ = {

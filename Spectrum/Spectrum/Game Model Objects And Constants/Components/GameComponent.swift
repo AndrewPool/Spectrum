@@ -19,9 +19,13 @@ class GameComponent: GKComponent{
     //we can do some closure shit here
     func hit(attackValue: Int){
         hp -= attackValue
+        if(hp<0){
+                 hp = 0
+             }
     }
     override func update(deltaTime seconds: TimeInterval) {
-        
+        print(hp)
+     
     }
     
     convenience init(_ hp:Int){

@@ -21,7 +21,6 @@ enum State{
         case .playing: scene.controlDelegate = scene
         }
     }
-    
 }
 
 
@@ -39,8 +38,9 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     var player = Player(name: "andy", key: PhysicsKey.player1)
     
     var player2 = Player(name: "jamie", key: PhysicsKey.player2, color:UIColor.yellow)
-    //always set this at the init! since this game doesn't delete things that can be delagates, I will not have to do any debugging aobut this latter
-    // first real time doing an optional
+    
+    var currentPlayer : Player!
+    
     
     //this toggles the selected property of ControlDelegate thus letting it know to stop doing whatever it was doing as focused, and letting the new one to start
     var controlDelegate : ControlDelegate! {
@@ -51,21 +51,21 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     var selected = false {didSet{toggleSelected(isTrue:selected)}}
     
     
-    
-    
-    
     private var lastUpdateTime : TimeInterval = 0
+    
+    
+   
     private var label : SKLabelNode?
     private var focusEmitterComposite = SKNode()
     //private var spawner : Spawner!
     //private var selected : Selectable?
     
-    
+  
     //
     //----------------scene did load and game set up stuff below----------------
     
     override func sceneDidLoad() {
-        
+        currentPlayer = player
         self.lastUpdateTime = 0
         
         physicsWorld.contactDelegate = self
@@ -112,7 +112,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         let spawner = SpawnerEntity(scene: self, player: player, location: location)
         spawner.setUp()
         spawnerEntities.append(spawner)
-    
+        
         
     }
     private func addSpawner2(at location:CGPoint){
@@ -126,7 +126,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     //----------------  game set up stuff above----------------
     
     
-   
+    
     
     
     
@@ -142,7 +142,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         if (controlDelegate != nil){
             controlDelegate!.touchesBegan(touches: touches)}
         
-      
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -163,12 +163,11 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
     // these are the default calls durring the game loop object is to select the next thing
-    var isTrue = true
-
-    func touchesBegan(touches: Set<UITouch>) {
     
+    func touchesBegan(touches: Set<UITouch>) {
+        
         print("spectrum scene self control delegate touchesBegan()")
-     
+        
     }
     
     func touchesMoved(touches: Set<UITouch>) {
@@ -176,10 +175,20 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     }
     //TODO
     func touchesEnded(touches: Set<UITouch>) {
-        controlDelegate = spawnerEntities[0].controlComponent
-          
+        if let touch = touches.first{
+            let location = touch.location(in: self)
+            for spawner in spawnerEntities{
+                if (spawner.playerComponent.player.physicsKey == currentPlayer.physicsKey){
+                    if (spawner.spawnerComponent.shapeNode.contains(location)){
+                        
+                        controlDelegate = spawner.controlComponent
+                        
+                    }
+                }
+                
+            }
+        }
     }
-    
     func touchesCancelled(touches: Set<UITouch>) {
         
     }
@@ -211,14 +220,16 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         spawningSystem.update(deltaTime: deltaTime)
         gameSystem.update(deltaTime: deltaTime)
         
-        
+        //delete dead stuff
         for i in stride(from: buddyEntities.count-1, through: 0, by: -1){
             if(!buddyEntities.isEmpty){
                 let entity = buddyEntities[i]
                 
                 if entity.component(ofType: GameComponent.self)!.hp<=0{
-                    entity.delete()
- 
+                    if let buddyComponent =  entity.component(ofType: BuddyComponent.self){
+                        buddyComponent.shapeNode.removeFromParent()
+                    }
+                     
                     buddyEntities.remove(at: i)
                     
                 }}

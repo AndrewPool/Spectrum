@@ -11,9 +11,7 @@ import GameKit
 class ControlComponent: GKComponent,ControlDelegate{
     
     var selected: Bool = false
-    {didSet{   if(selected){
-       
-        spawnerEntity.scene.addChild(focusFire) } else{focusFire.removeFromParent()}  }}
+    {didSet{if(selected){spawnerEntity.scene.addChild(focusFire) } else{focusFire.removeFromParent()}  }}
     
     weak var spawnerEntity: SpawnerEntity!
     
@@ -43,15 +41,15 @@ init(controler:SpawnerEntity){
     }
     
     func touchesBegan(touches: Set<UITouch>) {
-        print("Component TD")
+        //print("Component TD")
         guard let touch = touches.first else {return}
-       
+        
         moveFocus(to: touch.location(in: spawnerEntity.scene))
     }
     
     func touchesMoved(touches: Set<UITouch>) {
         
-        print("Component TM")
+        //print("Component TM")
         
         guard let touch = touches.first else {return}
         
@@ -59,15 +57,17 @@ init(controler:SpawnerEntity){
     }
     
     func touchesEnded(touches: Set<UITouch>) {
-        print("Component TE")
+        //print("Component TE")
         
         endControl()
     }
     
     func touchesCancelled(touches: Set<UITouch>) {
-        print("Component CANCELLED")
+        // print("Component CANCELLED")
         endControl()
     }
+    
+    
     private func endControl(){
         spawnerEntity.scene.controlDelegate = spawnerEntity.scene
     }
@@ -75,8 +75,8 @@ init(controler:SpawnerEntity){
     private func moveFocus(to location:CGPoint){
         spawnerEntity.focus = location
         
-       focusFire.position = location
-       
+        focusFire.position = location
+        
     }
     
 }

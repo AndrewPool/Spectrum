@@ -29,7 +29,7 @@ class BuddyComponent: GKComponent{
           super.init()
           //this is gross but i mean what can you do
           
-          shapeNode.setUpCollisionAsSpawner()
+         
           
       }
       func setEntity(){
