@@ -32,14 +32,14 @@ class SpawnerEntity: GKEntity{
     //internal components that alwasys exist
     weak var playerComponent: PlayerComponent!//there is a neutral player
     weak var spawnerComponent: SpawnerComponent!
+    //weak var radioComponent: RadioComponent!
     //internal components that might exist
     weak var controlComponent: ControlComponent?
     
     
     //to be componented
     
-    var buddies = [BuddyEntity]()
-    
+  
     //this is entity stuff, location and buddies
     var focus = CGPoint(x:100,y:100)
 
@@ -56,7 +56,7 @@ class SpawnerEntity: GKEntity{
         let position = location
         self.scene = scene
         
-        //  focus = SpectrumShape(shape: shape, player: player, size: Constants.Spawner.Focus.size)
+      
         super.init()
         
         
@@ -66,6 +66,7 @@ class SpawnerEntity: GKEntity{
         spawnerComponent.shapeNode.position = position
         spawnerComponent.shapeNode.addToScene(scene)
         scene.spawningSystem.addComponent(spawnerComponent)
+        
         spawnerComponent.gameSystem = (scene.gameSystem as! GKComponentSystem<GameComponent>)
         
         
@@ -77,8 +78,12 @@ class SpawnerEntity: GKEntity{
         addComponent(controlComponentStart)
         controlComponent=controlComponentStart
         
+        let gameComponent = GameComponent(100)
+        addComponent(gameComponent)
+        spawnerComponent.shapeNode.gameComponent = gameComponent
+        scene.gameSystem.addComponent(gameComponent)
         
-        // focus.addToScene(scene)
+       
     }
    
  

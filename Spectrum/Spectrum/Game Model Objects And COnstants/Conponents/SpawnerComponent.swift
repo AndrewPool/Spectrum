@@ -38,19 +38,20 @@ class SpawnerComponent: GKComponent{
         
         //
         let buddy = BuddyEntity(owner: spawnerEntity)
-        spawnerEntity.buddies.append(buddy)
-        
-//
+        scene.buddyEntities.append(buddy)
+       
         let buddyComponent = BuddyComponent(shape: shapeNode.shape, player: spawnerEntity!.playerComponent.player, size: Constants.Buddy.size , scene: scene)
 
-        let gameComponent = GameComponent()
+        let gameComponent = GameComponent(10)
         buddy.addComponent(gameComponent)
         gameSystem.addComponent(gameComponent)
+        
         
         buddyComponent.shapeNode.position = shapeNode.position
         buddyComponent.shapeNode.setUpCollisionAsBuddy()
         buddyComponent.shapeNode.addToScene(spawnerEntity!.scene)
         buddyComponent.shapeNode.startMoveAction(to: spawnerEntity!.focus)
+      
         buddyComponent.shapeNode.gameComponent = gameComponent
         buddy.addComponent(buddyComponent)
         
@@ -78,13 +79,15 @@ class SpawnerComponent: GKComponent{
         shapeNode.setUpCollisionAsSpawner()
         
     }
-    func setEntity(){
-        let parent = entity as! SpawnerEntity
-        spawnerEntity = parent
-        
-    }
+  
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    func setEntity(){
+          let parent = entity as! SpawnerEntity
+          spawnerEntity = parent
+          
+      }
+    
 }

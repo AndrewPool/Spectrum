@@ -28,7 +28,8 @@ enum State{
 class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
-    var gameField = [SpawnerEntity]()
+    var spawnerEntities = [SpawnerEntity]()
+    var buddyEntities = [BuddyEntity]()
     
     let spawningSystem = GKComponentSystem(componentClass: SpawnerComponent.self)
     let gameSystem = GKComponentSystem(componentClass: GameComponent.self)
@@ -110,15 +111,15 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         
         let spawner = SpawnerEntity(scene: self, player: player, location: location)
         spawner.setUp()
-        gameField.append(spawner)
-        
+        spawnerEntities.append(spawner)
+    
         
     }
     private func addSpawner2(at location:CGPoint){
         
         let spawner = SpawnerEntity(scene: self, player: player2, location: location)
         spawner.setUp()
-        gameField.append(spawner)
+        spawnerEntities.append(spawner)
         
     }
     
@@ -165,7 +166,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     var isTrue = true
 
     func touchesBegan(touches: Set<UITouch>) {
-      
+    
         print("spectrum scene self control delegate touchesBegan()")
      
     }
@@ -175,7 +176,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     }
     //TODO
     func touchesEnded(touches: Set<UITouch>) {
-        controlDelegate = gameField[0].controlComponent
+        controlDelegate = spawnerEntities[0].controlComponent
           
     }
     
@@ -202,14 +203,28 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         
         let deltaTime = currentTime-lastUpdateTime
         
-        for entity in gameField{
-            entity.update(deltaTime: deltaTime)
-        }
+//        for entity in gameField{
+//            entity.update(deltaTime: deltaTime)
+        //        }
         // Calculate time since last update
-       // let dt = currentTime - self.lastUpdateTime
+        // let dt = currentTime - self.lastUpdateTime
         spawningSystem.update(deltaTime: deltaTime)
+        gameSystem.update(deltaTime: deltaTime)
         
-       
+        
+        for i in stride(from: buddyEntities.count-1, through: 0, by: -1){
+            if(!buddyEntities.isEmpty){
+                let entity = buddyEntities[i]
+                
+                if entity.component(ofType: GameComponent.self)!.hp<=0{
+                    entity.delete()
+ 
+                    buddyEntities.remove(at: i)
+                    
+                }}
+            
+        }
+        
         self.lastUpdateTime = currentTime
     }
     //-------------update above-------------------
@@ -219,10 +234,14 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
     func didBegin(_ contact: SKPhysicsContact) {
-        let  a = contact.bodyA.node as! SpectrumShape
-        let  b = contact.bodyB.node as! SpectrumShape
-        a.gameComponent!.hit(attackValue: b.gameComponent!.hp)
-        b.gameComponent!.hit(attackValue: a.gameComponent!.hp)
+        
+        guard let  a = contact.bodyA.node as? SpectrumShape else {return}
+        guard let  b = contact.bodyB.node as? SpectrumShape else {return}
+        
+        let aAttack = a.gameComponent!.hp
+        let bAttack = b.gameComponent!.hp
+        a.gameComponent!.hit(attackValue: bAttack)
+        b.gameComponent!.hit(attackValue: aAttack)
         
     }
     

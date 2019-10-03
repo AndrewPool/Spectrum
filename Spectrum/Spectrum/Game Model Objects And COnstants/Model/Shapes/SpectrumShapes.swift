@@ -27,6 +27,12 @@ enum Shape{
 
 
 class SpectrumShape : SKShapeNode {
+    override var description: String{
+        if(gameComponent == nil){
+            return "no game component \(size)"
+        }
+        return "has component"
+    }
     
     let shape : Shape
     
@@ -37,8 +43,8 @@ class SpectrumShape : SKShapeNode {
     let strokeWidth = 5
     let outlineColor = UIColor.red
     let inlineColor = UIColor.purple
-    
-    weak var gameComponent : GameComponent?
+    //cashe value
+    weak var gameComponent : GameComponent!
 
     //--------inits and set up funcs below------------------
     //todo this only does circles
@@ -73,7 +79,7 @@ class SpectrumShape : SKShapeNode {
         scene.addChild(self)
        
         startPulseAction()
-       // scene.addChild(inline)
+       
     }
     func setUpCollisionAsSpawner(){
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))

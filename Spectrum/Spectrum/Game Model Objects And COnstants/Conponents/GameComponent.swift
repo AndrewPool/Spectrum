@@ -21,10 +21,20 @@ class GameComponent: GKComponent{
         hp -= attackValue
     }
     override func update(deltaTime seconds: TimeInterval) {
-        if hp<0{
-            if let deleteable = entity as? Deletable{
-                deleteable.delete()
-            }
-        }
+        
+    }
+    
+    convenience init(_ hp:Int){
+        
+        self.init()
+        self.hp = hp
+    }
+    override init(){
+        
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 }

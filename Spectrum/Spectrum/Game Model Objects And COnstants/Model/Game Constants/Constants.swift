@@ -126,8 +126,8 @@ enum PhysicsKey{
         case .player1:
             buddy.categoryBitMask = Constants.Collision.playerABuddies.rawValue
             buddy.collisionBitMask =
-                Constants.Collision.playerABuddies.rawValue
-              //  Constants.Collision.playerSpawner.rawValue
+                Constants.Collision.playerABuddies.rawValue |
+                Constants.Collision.playerASpawner.rawValue
             
             buddy.contactTestBitMask =
                 Constants.Collision.playerBBuddies.rawValue |
