@@ -24,7 +24,7 @@ class GameComponent: GKComponent{
              }
     }
     override func update(deltaTime seconds: TimeInterval) {
-        print(hp)
+       //print(hp)
      
     }
     

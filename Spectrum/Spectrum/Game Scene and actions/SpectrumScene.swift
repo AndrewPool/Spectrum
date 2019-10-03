@@ -75,6 +75,8 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         state = .intro
         addLabel()
         
+        physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
+        
     }
     
    
