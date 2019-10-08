@@ -74,6 +74,9 @@ enum PhysicsKey{
         
     //for spawner
     func setupCollisionParamaters(spawner:SKPhysicsBody){
+        spawner.restitution = 1
+               spawner.friction = 0
+               spawner.allowsRotation = false
         switch self{
         case .neutral:
             spawner.categoryBitMask = Constants.Collision.neutral.rawValue
@@ -109,6 +112,9 @@ enum PhysicsKey{
     }
     //for buddies
     func setupCollisionParamaters(buddy:SKPhysicsBody){
+        buddy.restitution = 0.4
+        buddy.friction = 0.1
+        buddy.allowsRotation = false
         switch self{
         case .neutral:
             buddy.categoryBitMask = Constants.Collision.neutral.rawValue

@@ -51,10 +51,11 @@ class SpawnerComponent: GKComponent{
         buddyComponent.shapeNode.setUpCollisionAsBuddy()
         buddyComponent.shapeNode.addToScene(spawnerEntity!.scene)
         buddyComponent.shapeNode.startMoveAction(to: spawnerEntity!.focus)
+        buddyComponent.buddyEntity = buddy
       
         buddyComponent.shapeNode.gameComponent = gameComponent
         buddy.addComponent(buddyComponent)
-        
+        buddy.owner = spawnerEntity
     }
     //----------------update above----------------------------
     
@@ -84,7 +85,7 @@ class SpawnerComponent: GKComponent{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setEntity(){
+     func setEntity(){
           let parent = entity as! SpawnerEntity
           spawnerEntity = parent
           

@@ -30,16 +30,18 @@ class ControlComponent: GKComponent,ControlDelegate{
         
     }()
     
-
-init(controler:SpawnerEntity){
-    spawnerEntity = controler
-    super.init()
-}
-
+    
+    init(controler:SpawnerEntity){
+        spawnerEntity = controler
+        super.init()
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    //
     
+    //---------delegate controls below
     func touchesBegan(touches: Set<UITouch>) {
         //print("Component TD")
         guard let touch = touches.first else {return}
@@ -70,6 +72,7 @@ init(controler:SpawnerEntity){
     
     private func endControl(){
         spawnerEntity.scene.controlDelegate = spawnerEntity.scene
+        spawnerEntity.scene.switchPlayer()
     }
     
     private func moveFocus(to location:CGPoint){

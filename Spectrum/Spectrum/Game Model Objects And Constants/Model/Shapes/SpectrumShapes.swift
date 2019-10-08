@@ -115,7 +115,9 @@ class SpectrumShape : SKShapeNode {
     }
 
     func startMoveAction(to:CGPoint){
-        physicsBody?.applyForce(CGVector(dx: (to.x-position.x), dy: (to.y-position.y)))
+        
+        
+        physicsBody?.applyForce(CGVector(dx: (to.x-position.x)/4, dy: (to.y-position.y)/4))
     }
     
 }

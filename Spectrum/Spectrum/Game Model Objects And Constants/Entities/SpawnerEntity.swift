@@ -41,7 +41,7 @@ class SpawnerEntity: GKEntity{
     
   
     //this is entity stuff, location and buddies
-    var focus = CGPoint(x:100,y:100)
+    var focus = CGPoint(x:0,y:0)
 
     
     //
