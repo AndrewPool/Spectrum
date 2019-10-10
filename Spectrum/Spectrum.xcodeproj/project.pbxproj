@@ -10,6 +10,7 @@
 		95108BA4234BCA38002487D5 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA2234BCA38002487D5 /* CoreDataModel.xcdatamodeld */; };
 		95108BA6234BD715002487D5 /* Vector2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA5234BD715002487D5 /* Vector2D.swift */; };
 		95108BA8234BDAE5002487D5 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA7234BDAE5002487D5 /* VectorMath.swift */; };
+		952AC1EB234DB6100065FC14 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 952AC1EA234DB6100065FC14 /* TestScene.sks */; };
 		952E97862342F60F0086F940 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97852342F60F0086F940 /* GameComponent.swift */; };
 		952E97882342F8000086F940 /* BuddyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97872342F8000086F940 /* BuddyEntity.swift */; };
 		952E978A2342FD1E0086F940 /* Deletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97892342FD1E0086F940 /* Deletable.swift */; };
@@ -26,6 +27,7 @@
 		956FC6662340388E001DC850 /* ControlComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 956FC6652340388E001DC850 /* ControlComponent.swift */; };
 		9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79D2339647600615E7D /* ControlDelagate.swift */; };
 		9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79F233987A300615E7D /* StartGameDelegate.swift */; };
+		95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */; };
 		95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C273FC232D713500DDDD58 /* SpectrumShapes.swift */; };
 		95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB96062329810E007579EF /* SpawnerEntity.swift */; };
 		95DB960D232983BB007579EF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960C232983BB007579EF /* Player.swift */; };
@@ -43,6 +45,7 @@
 		95108BA3234BCA38002487D5 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		95108BA5234BD715002487D5 /* Vector2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2D.swift; sourceTree = "<group>"; };
 		95108BA7234BDAE5002487D5 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
+		952AC1EA234DB6100065FC14 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 		952E97852342F60F0086F940 /* GameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
 		952E97872342F8000086F940 /* BuddyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyEntity.swift; sourceTree = "<group>"; };
 		952E97892342FD1E0086F940 /* Deletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deletable.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		956FC6652340388E001DC850 /* ControlComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlComponent.swift; sourceTree = "<group>"; };
 		9576D79D2339647600615E7D /* ControlDelagate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDelagate.swift; sourceTree = "<group>"; };
 		9576D79F233987A300615E7D /* StartGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameDelegate.swift; sourceTree = "<group>"; };
+		95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddySpawnerHelper.swift; sourceTree = "<group>"; };
 		95C273FC232D713500DDDD58 /* SpectrumShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumShapes.swift; sourceTree = "<group>"; };
 		95DB96062329810E007579EF /* SpawnerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerEntity.swift; sourceTree = "<group>"; };
 		95DB960C232983BB007579EF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -109,28 +113,10 @@
 		95058D40234009800094C359 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				952E97892342FD1E0086F940 /* Deletable.swift */,
-				95DB960E23298544007579EF /* Game Constants */,
-				95188400232D5C830018CF51 /* Shapes */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		95188400232D5C830018CF51 /* Shapes */ = {
-			isa = PBXGroup;
-			children = (
+				9564F6A42342EA6300420557 /* Constants.swift */,
 				95C273FC232D713500DDDD58 /* SpectrumShapes.swift */,
 			);
-			path = Shapes;
-			sourceTree = "<group>";
-		};
-		951E0579232C1EBC003786D1 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				95108BA7234BDAE5002487D5 /* VectorMath.swift */,
-				95108BA5234BD715002487D5 /* Vector2D.swift */,
-			);
-			path = Extensions;
+			path = Model;
 			sourceTree = "<group>";
 		};
 		9547C35B231756AB008F28C7 = {
@@ -153,8 +139,11 @@
 			isa = PBXGroup;
 			children = (
 				95DB960523297C09007579EF /* App Control */,
-				951E0579232C1EBC003786D1 /* Extensions */,
-				95DB960323297B54007579EF /* Game Model Objects And Constants */,
+				95886F75234FD739005E6787 /* Helper Classes and Extensions */,
+				95886F78234FD7D7005E6787 /* Protocols */,
+				95058D40234009800094C359 /* Model */,
+				95058D3E2340093B0094C359 /* Entities */,
+				95058D3F234009480094C359 /* Components */,
 				95DB960423297B68007579EF /* Game Scene and actions */,
 				95DB96112329B3D0007579EF /* Emitters */,
 				9547C374231756AC008F28C7 /* Assets.xcassets */,
@@ -163,31 +152,32 @@
 			path = Spectrum;
 			sourceTree = "<group>";
 		};
-		956FC66023403177001DC850 /* Control Delegate */ = {
+		95886F75234FD739005E6787 /* Helper Classes and Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9576D79D2339647600615E7D /* ControlDelagate.swift */,
-				9576D79F233987A300615E7D /* StartGameDelegate.swift */,
+				95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */,
+				95108BA7234BDAE5002487D5 /* VectorMath.swift */,
+				95108BA5234BD715002487D5 /* Vector2D.swift */,
 			);
-			path = "Control Delegate";
+			path = "Helper Classes and Extensions";
 			sourceTree = "<group>";
 		};
-		95DB960323297B54007579EF /* Game Model Objects And Constants */ = {
+		95886F78234FD7D7005E6787 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				95058D40234009800094C359 /* Model */,
-				95058D3E2340093B0094C359 /* Entities */,
-				95058D3F234009480094C359 /* Components */,
-				956FC66023403177001DC850 /* Control Delegate */,
+				952E97892342FD1E0086F940 /* Deletable.swift */,
+				9576D79D2339647600615E7D /* ControlDelagate.swift */,
 			);
-			path = "Game Model Objects And Constants";
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		95DB960423297B68007579EF /* Game Scene and actions */ = {
 			isa = PBXGroup;
 			children = (
+				9576D79F233987A300615E7D /* StartGameDelegate.swift */,
 				9547C369231756AB008F28C7 /* GameScene.sks */,
 				9547C36D231756AB008F28C7 /* SpectrumScene.swift */,
+				952AC1EA234DB6100065FC14 /* TestScene.sks */,
 			);
 			path = "Game Scene and actions";
 			sourceTree = "<group>";
@@ -202,14 +192,6 @@
 				9547C36F231756AB008F28C7 /* GameViewController.swift */,
 			);
 			path = "App Control";
-			sourceTree = "<group>";
-		};
-		95DB960E23298544007579EF /* Game Constants */ = {
-			isa = PBXGroup;
-			children = (
-				9564F6A42342EA6300420557 /* Constants.swift */,
-			);
-			path = "Game Constants";
 			sourceTree = "<group>";
 		};
 		95DB96112329B3D0007579EF /* Emitters */ = {
@@ -303,6 +285,7 @@
 			files = (
 				9547C373231756AB008F28C7 /* Main.storyboard in Resources */,
 				9547C36A231756AB008F28C7 /* GameScene.sks in Resources */,
+				952AC1EB234DB6100065FC14 /* TestScene.sks in Resources */,
 				95FBB6DA233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks in Resources */,
 				95FBB6D3233C16DA003ADBEA /* Assets.xcassets in Resources */,
 				9547C375231756AC008F28C7 /* Assets.xcassets in Resources */,
@@ -326,6 +309,7 @@
 				95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */,
 				952E97882342F8000086F940 /* BuddyEntity.swift in Sources */,
 				9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */,
+				95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */,
 				9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */,
 				9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */,
 				9547C370231756AB008F28C7 /* GameViewController.swift in Sources */,

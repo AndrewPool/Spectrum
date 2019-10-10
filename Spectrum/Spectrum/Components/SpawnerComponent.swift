@@ -17,6 +17,8 @@ class SpawnerComponent: GKComponent{
     weak var scene : SpectrumScene!
     weak var gameSystem : GKComponentSystem<GameComponent>!
     
+    //sweet sweet functional programing
+    var spawnBuddy: (()->Void)!
     private var spawnCountdown = 0.0
     
     
@@ -34,7 +36,7 @@ class SpawnerComponent: GKComponent{
         
     }
     
-    private func spawnBuddy(){
+    private func spawnBuddyStart()->Void{
         
         //
         let buddy = BuddyEntity(owner: spawnerEntity)
@@ -73,10 +75,10 @@ class SpawnerComponent: GKComponent{
         self.scene = scene
         
         shapeNode = spectrumShape
-        
+      
         super.init()
         //this is gross but i mean what can you do
-        
+       spawnBuddy = spawnBuddyStart
         shapeNode.setUpCollisionAsSpawner()
         
     }

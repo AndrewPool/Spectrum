@@ -14,7 +14,7 @@ class BuddyComponent: GKComponent{
   //  weak var gameComponent : GameComponent
     //-------------update and helpers----------------------
    
-    private var strength = 30.0
+    private var strength = 1.0
     private var strength2 = 50.0
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -28,7 +28,7 @@ class BuddyComponent: GKComponent{
 
         let currentUpdatedVelocity = pushToFocus(Vector2(currentVelocity!))
         
-        let slowed = slowToSpeedLimit(currentUpdatedVelocity)
+       // let slowed = slowToSpeedLimit(currentUpdatedVelocity)
         
        
        // let padded = lineBetween - (-lineBetween / 4)
@@ -37,7 +37,7 @@ class BuddyComponent: GKComponent{
         
         
        // let otherVector = Vector2(
-        shapeNode.physicsBody?.applyImpulse(CGVector(dx: CGFloat(slowed.x), dy: CGFloat(slowed.y)))
+        shapeNode.physicsBody?.applyImpulse(CGVector(dx: CGFloat(currentUpdatedVelocity.x), dy: CGFloat(currentUpdatedVelocity.y)))
       
         shapeNode.physicsBody?.velocity = CGVector(slowToSpeedLimit2(Vector2((shapeNode.physicsBody?.velocity)!)))
     }
@@ -48,7 +48,7 @@ class BuddyComponent: GKComponent{
         
          let lineBetween = (focus - selfLocation)
         
-      //  let lineBetweenAdjusted = lineBetween/(lineBetween.length)
+       //let lineBetweenAdjusted = lineBetween/(lineBetween.length)
         
         
         
