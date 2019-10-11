@@ -28,6 +28,8 @@
 		9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79D2339647600615E7D /* ControlDelagate.swift */; };
 		9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79F233987A300615E7D /* StartGameDelegate.swift */; };
 		95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */; };
+		95B73126234FE048006E6888 /* EmitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B73125234FE048006E6888 /* EmitterHelper.swift */; };
+		95B73128234FE5B6006E6888 /* ShapeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B73127234FE5B6006E6888 /* ShapeComponent.swift */; };
 		95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C273FC232D713500DDDD58 /* SpectrumShapes.swift */; };
 		95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB96062329810E007579EF /* SpawnerEntity.swift */; };
 		95DB960D232983BB007579EF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960C232983BB007579EF /* Player.swift */; };
@@ -65,6 +67,8 @@
 		9576D79D2339647600615E7D /* ControlDelagate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlDelagate.swift; sourceTree = "<group>"; };
 		9576D79F233987A300615E7D /* StartGameDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameDelegate.swift; sourceTree = "<group>"; };
 		95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddySpawnerHelper.swift; sourceTree = "<group>"; };
+		95B73125234FE048006E6888 /* EmitterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterHelper.swift; sourceTree = "<group>"; };
+		95B73127234FE5B6006E6888 /* ShapeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeComponent.swift; sourceTree = "<group>"; };
 		95C273FC232D713500DDDD58 /* SpectrumShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumShapes.swift; sourceTree = "<group>"; };
 		95DB96062329810E007579EF /* SpawnerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerEntity.swift; sourceTree = "<group>"; };
 		95DB960C232983BB007579EF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 				956FC6632340357A001DC850 /* SpawnerComponent.swift */,
 				952E97852342F60F0086F940 /* GameComponent.swift */,
 				952E978B2342FE9A0086F940 /* BuddyComponent.swift */,
+				95B73127234FE5B6006E6888 /* ShapeComponent.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -158,6 +163,7 @@
 				95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */,
 				95108BA7234BDAE5002487D5 /* VectorMath.swift */,
 				95108BA5234BD715002487D5 /* Vector2D.swift */,
+				95B73125234FE048006E6888 /* EmitterHelper.swift */,
 			);
 			path = "Helper Classes and Extensions";
 			sourceTree = "<group>";
@@ -306,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95B73126234FE048006E6888 /* EmitterHelper.swift in Sources */,
 				95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */,
 				952E97882342F8000086F940 /* BuddyEntity.swift in Sources */,
 				9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */,
@@ -316,6 +323,7 @@
 				95108BA4234BCA38002487D5 /* CoreDataModel.xcdatamodeld in Sources */,
 				952E978C2342FE9A0086F940 /* BuddyComponent.swift in Sources */,
 				956FC6662340388E001DC850 /* ControlComponent.swift in Sources */,
+				95B73128234FE5B6006E6888 /* ShapeComponent.swift in Sources */,
 				95108BA6234BD715002487D5 /* Vector2D.swift in Sources */,
 				95108BA8234BDAE5002487D5 /* VectorMath.swift in Sources */,
 				9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */,
@@ -473,6 +481,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJ28SKB4DT;
 				INFOPLIST_FILE = Spectrum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,6 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = PJ28SKB4DT;
 				INFOPLIST_FILE = Spectrum/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

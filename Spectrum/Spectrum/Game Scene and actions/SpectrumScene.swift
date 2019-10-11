@@ -26,7 +26,7 @@ enum State{
 }
 
 
-class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
+class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, ControlDelegate {
     
     
     var spawnerEntities = [SpawnerEntity]()
@@ -50,7 +50,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         willSet{if controlDelegate != nil{controlDelegate?.selected = false}}
         didSet{controlDelegate!.selected = true}}
     
-    //since this can be it's on delegate as it functions as the root controller, it has it's own delegate properties
+    //since this can be it's on delegate as it functions as the root game controller, it has it's own delegate properties
     var selected = false {didSet{toggleSelected(isTrue:selected)}}
     
     
@@ -75,6 +75,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     //----------------scene did load and game set up stuff below----------------
     
     override func sceneDidLoad() {
+        
         currentPlayer = player
         self.lastUpdateTime = 0
         
@@ -89,11 +90,8 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         physicsBody!.restitution = 1
         physicsBody!.friction = 0
         
-        
-        
-        
-      
-      
+    
+       
     }
     
     
@@ -129,7 +127,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     private func addSpawner(at location:CGPoint){
         
         let spawner = SpawnerEntity(scene: self, player: player, location: location)
-        spawner.setUp()
+     
         spawnerEntities.append(spawner)
         
         
@@ -137,7 +135,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     private func addSpawner2(at location:CGPoint){
         
         let spawner = SpawnerEntity(scene: self, player: player2, location: location)
-        spawner.setUp()
+     
         spawnerEntities.append(spawner)
         
     }
@@ -159,7 +157,9 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
         print("touchesBegan")
         
         if (controlDelegate != nil){
-            controlDelegate!.touchesBegan(touches: touches)}
+            controlDelegate!.touchesBegan(touches: touches)
+            
+        }
         
         
     }
@@ -198,7 +198,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
             let location = touch.location(in: self)
             for spawner in spawnerEntities{
                 if (spawner.playerComponent.player.physicsKey == currentPlayer.physicsKey){
-                    if (spawner.spawnerComponent.shapeNode.contains(location)){
+                    if (spawner.shapeComponent.shapeNode.contains(location)){
                         
                         controlDelegate = spawner.controlComponent
                         
@@ -297,10 +297,16 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
     
     
     
-    
+   
     func pauseGame(){
-        scene?.isPaused = true
-        
+        scene?.speed = 0.0
+        print("pause")
+     
+    }
+    func resume(){
+        //self.lastUpdateTime = Date().timeIntervalSinceReferenceDate
+        scene?.speed = 1.0
+        print("resume")
     }
     
     
@@ -369,6 +375,10 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, ControlDelegate {
             currentPlayer = player
         }
         switchColors()
+    }
+    
+    func sceneWillResignActive(_ scene: UIScene) {
+        physicsWorld.gravity = CGVector(dx: 100, dy: 100)
     }
 }
 

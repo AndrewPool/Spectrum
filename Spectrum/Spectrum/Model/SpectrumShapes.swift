@@ -27,12 +27,12 @@ enum Shape{
 
 
 class SpectrumShape : SKShapeNode {
-    override var description: String{
-        if(gameComponent == nil){
-            return "no game component \(size)"
-        }
-        return "has component"
-    }
+//    override var description: String{
+//        if(gameComponent == nil){
+//            return "no game component \(size)"
+//        }
+//        return "has component"
+//    }
     
     let shape : Shape
     
@@ -77,8 +77,6 @@ class SpectrumShape : SKShapeNode {
     //this should be called imediatly after init()
     func addToScene(_ scene: SKScene){
         scene.addChild(self)
-       
-       
     }
     func setUpCollisionAsSpawner(){
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size)/2)
@@ -116,8 +114,8 @@ class SpectrumShape : SKShapeNode {
 
     func startMoveAction(to:CGPoint){
         
-        
-        physicsBody?.applyForce(CGVector(dx: (to.x-position.x)/4, dy: (to.y-position.y)/4))
+//
+//        physicsBody?.applyImpulse(CGVector(dx: (to.x-position.x)/100, dy: (to.y-position.y)/100))
     }
     
 }

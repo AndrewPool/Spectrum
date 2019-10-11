@@ -31,15 +31,13 @@ class SpawnerEntity: GKEntity{
     
     //internal components that alwasys exist
     weak var playerComponent: PlayerComponent!//there is a neutral player
-    weak var spawnerComponent: SpawnerComponent!
-    //weak var radioComponent: RadioComponent!
-    //internal components that might exist
+ 
+    weak var shapeComponent: ShapeComponent!
+    //internal components that might not exist
+    //i might not use this
     weak var controlComponent: ControlComponent?
+    weak var spawnerComponent: SpawnerComponent?
     
-    
-    //to be componented
-    
-  
     //this is entity stuff, location and buddies
     var focus = CGPoint(x:0,y:0)
 
@@ -56,20 +54,26 @@ class SpawnerEntity: GKEntity{
         let position = location
         self.scene = scene
         
-      
+        
         super.init()
         
         
-        let spawnerComponent = SpawnerComponent(shape: shape, player:player, size:Constants.Spawner.size, scene: scene)
-        addComponent(spawnerComponent)
-        self.spawnerComponent = spawnerComponent
-        spawnerComponent.shapeNode.position = position
-        spawnerComponent.shapeNode.addToScene(scene)
+        let spawnerComponent = SpawnerComponent(
+            spawnBuddyFunction: buddyForSpawner
+        )
+         addComponent(spawnerComponent)
+         self.spawnerComponent = spawnerComponent
+        
+        let shapeComponent = ShapeComponent(shape: shape, player: player, size: Constants.Spawner.size)
+        addComponent(shapeComponent)
+        self.shapeComponent = shapeComponent
+        shapeComponent.shapeNode.position = position
+        shapeComponent.shapeNode.addToScene(scene)
         scene.spawningSystem.addComponent(spawnerComponent)
-        spawnerComponent.shapeNode.startPulseAction()
+        shapeComponent.shapeNode.startPulseAction()
         
-        spawnerComponent.gameSystem = (scene.gameSystem as! GKComponentSystem<GameComponent>)
-        
+//        shapeComponent.gameSystem = (scene.gameSystem as! GKComponentSystem<GameComponent>)
+//
         
         let playerComponent = PlayerComponent(player: player)
         addComponent(playerComponent)
@@ -81,7 +85,7 @@ class SpawnerEntity: GKEntity{
         
         let gameComponent = GameComponent(100)
         addComponent(gameComponent)
-        spawnerComponent.shapeNode.gameComponent = gameComponent
+        shapeComponent.shapeNode.gameComponent = gameComponent
         scene.gameSystem.addComponent(gameComponent)
         
        
@@ -91,11 +95,7 @@ class SpawnerEntity: GKEntity{
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    func setUp(){
-        spawnerComponent.setEntity()
-    }
-    
+
        //-----------------init and setup above
   
     

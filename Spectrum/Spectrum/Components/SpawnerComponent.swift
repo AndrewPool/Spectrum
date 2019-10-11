@@ -10,15 +10,10 @@ import GameKit
 
 class SpawnerComponent: GKComponent{
     
-    let shapeNode : SpectrumShape
-    
-    //sweet cache value
-    weak var spawnerEntity : SpawnerEntity!
-    weak var scene : SpectrumScene!
-    weak var gameSystem : GKComponentSystem<GameComponent>!
-    
-    //sweet sweet functional programing
+   
+   //sweet sweet functional programing
     var spawnBuddy: (()->Void)!
+    
     private var spawnCountdown = 0.0
     
     
@@ -28,58 +23,31 @@ class SpawnerComponent: GKComponent{
     }
     
     private func tryToSpawn(deltaTime: TimeInterval){
-        if (spawnCountdown <= 0){
+        if (spawnCountdown >= Constants.Spawner.pulseSpeedInterval){
             spawnBuddy()
-            spawnCountdown += Constants.Spawner.pulseSpeedInterval
+            spawnCountdown = 0
         }
-        spawnCountdown -= deltaTime
+        spawnCountdown += deltaTime
         
     }
     
-    private func spawnBuddyStart()->Void{
-        
-        //
-        let buddy = BuddyEntity(owner: spawnerEntity)
-        scene.buddyEntities.append(buddy)
-       
-        let buddyComponent = BuddyComponent(shape: shapeNode.shape, player: spawnerEntity!.playerComponent.player, size: Constants.Buddy.size , scene: scene)
-
-        let gameComponent = GameComponent(10)
-        buddy.addComponent(gameComponent)
-        gameSystem.addComponent(gameComponent)
-        
-        
-        buddyComponent.shapeNode.position = shapeNode.position
-        buddyComponent.shapeNode.setUpCollisionAsBuddy()
-        buddyComponent.shapeNode.addToScene(spawnerEntity!.scene)
-        buddyComponent.shapeNode.startMoveAction(to: spawnerEntity!.focus)
-        buddyComponent.buddyEntity = buddy
-      
-        buddyComponent.shapeNode.gameComponent = gameComponent
-        buddy.addComponent(buddyComponent)
-        buddy.owner = spawnerEntity
-    }
     //----------------update above----------------------------
     
     
     
     //------------init and set up-----------------
-    convenience init(shape: Shape, player:Player, size:Int, scene:SpectrumScene){
-        
-        let shape = SpectrumShape(shape: shape, player: player, size: size)
-        
-        self.init(shape, scene)
+    convenience init( spawnBuddyFunction: @escaping ()->Void){
+       
+       
+        self.init(spawnBuddyFunction)
     }
     
-    init(_ spectrumShape:SpectrumShape,_ scene:SpectrumScene){
-        self.scene = scene
-        
-        shapeNode = spectrumShape
+    init(_ spawnBuddyFunction: @escaping ()->Void){
+    
+        spawnBuddy = spawnBuddyFunction
       
         super.init()
-        //this is gross but i mean what can you do
-       spawnBuddy = spawnBuddyStart
-        shapeNode.setUpCollisionAsSpawner()
+    
         
     }
   
@@ -87,10 +55,6 @@ class SpawnerComponent: GKComponent{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-     func setEntity(){
-          let parent = entity as! SpawnerEntity
-          spawnerEntity = parent
-          
-      }
+     
     
 }
