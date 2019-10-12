@@ -13,14 +13,7 @@ class ShapeComponent: GKComponent{
     
     let shapeNode : SpectrumShape
     
-       //sweet cache value
-    //weak var spawnerEntity : SpawnerEntity!
-        //weak var scene : SpectrumScene!
-    
-    //this is so that the collisiono can do functions and shit
-    //   weak var gameSystem : GKComponentSystem<GameComponent>!
-        
-    
+   
     //------------init and set up-----------------
     convenience init(shape: Shape, player:Player, size:Int//,
                    //  scene:SpectrumScene

@@ -13,20 +13,22 @@ enum State{
     
     case intro
     case playing
-    
-    
+    //case paused
+    //case over
+    //i should use a state machine  for this, but i think it'll be fine.
     func changedState(for scene:SpectrumScene){
         switch (self){
         case .intro: scene.controlDelegate = StartUpDelegate(scene: scene)
             return
         case .playing: scene.controlDelegate = scene
+            //case .paused : physicsDelegate.speed = 0.0
         }
     }
     
 }
 
 
-class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, ControlDelegate {
+class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
     
     
     var spawnerEntities = [SpawnerEntity]()
@@ -38,11 +40,11 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
     private var state : State!{didSet{state.changedState(for: self)}}
     
     
-   var player = Player(name: "andy", key: PhysicsKey.player1)
-//
-    var player2 = Player(name: "jamie", key: PhysicsKey.player2, color:UIColor.yellow)
-//
-    var currentPlayer : Player!
+    let player = PlayerComponent(player: Player(name: "andy", key: PhysicsKey.player1))
+    //
+    let player2 = PlayerComponent(player: Player(name: "jamie", key: PhysicsKey.player2, color:UIColor.yellow))
+    //
+    var currentPlayer : PlayerComponent!
     
     
     //this toggles the selected property of ControlDelegate thus letting it know to stop doing whatever it was doing as focused, and letting the new one to start
@@ -57,13 +59,13 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
     private var lastUpdateTime : TimeInterval = 0
     
     
-   
+    private var physicsDelegate : GamePhysicsDelegate!//i need a pointer to this
     private var pauseButton : SKSpriteNode?
-    private var label : SKLabelNode?
+  
     private var focusEmitterComposite = SKNode()
     
     //game state
-  
+    
     private var spawnInterval = Constants.Spawner.pulseSpeedInterval
    
     private let buddypulseInterval = Constants.Spawner.pulseSpeedInterval/2
@@ -78,13 +80,13 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
         
         currentPlayer = player
         self.lastUpdateTime = 0
-        
-        physicsWorld.contactDelegate = self
+       
+        physicsDelegate = GamePhysicsDelegate()
+        physicsWorld.contactDelegate = physicsDelegate
         physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
-        
+         
         setupFocusEmitterComposite()
         state = .intro
-        addLabel()
         
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody!.restitution = 1
@@ -94,56 +96,11 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
        
     }
     
-    
-    
-    private func addLabel(){
-        self.label = self.childNode(withName: "//Title Label") as? SKLabelNode
-        if let label = self.label {
-            label.alpha = 0.0
-            label.run(SKAction.fadeIn(withDuration: 2.0))
-        }
-    }
-    
-    
     //----------------scene did load aboce----------------
     
     
     
-    
-    
-    
-    //----------------set up game below----------------
-    func setUpGame(){
-        print("setting up game")
-        label?.run(SKAction.fadeOut(withDuration: 5))
-        controlDelegate = self
-        addSpawner(at: CGPoint(x: 150, y: 200))
-        addSpawner(at: CGPoint(x:-150, y: -200))
-        addSpawner2(at: CGPoint(x:150, y:-200))
-        addSpawner2(at: CGPoint(x:-150, y:200))
-    }
-    
-    //gets called at set up game()\
-    private func addSpawner(at location:CGPoint){
-        
-        let spawner = SpawnerEntity(scene: self, player: player, location: location)
-     
-        spawnerEntities.append(spawner)
-        
-        
-    }
-    private func addSpawner2(at location:CGPoint){
-        
-        let spawner = SpawnerEntity(scene: self, player: player2, location: location)
-     
-        spawnerEntities.append(spawner)
-        
-    }
-    
-    //----------------  game set up stuff above----------------
-    
-    
-    
+  
     
     
     
@@ -197,7 +154,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
         if let touch = touches.first{
             let location = touch.location(in: self)
             for spawner in spawnerEntities{
-                if (spawner.playerComponent.player.physicsKey == currentPlayer.physicsKey){
+                if (spawner.playerComponent.player.physicsKey == currentPlayer.player.physicsKey){
                     if (spawner.shapeComponent.shapeNode.contains(location)){
                         
                         controlDelegate = spawner.controlComponent
@@ -252,9 +209,6 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
         gameSystem.update(deltaTime: deltaTime)
         
         //delete dead stuff
-        
-       
-        
         for i in stride(from: buddyEntities.count-1, through: 0, by: -1){
             if(!buddyEntities.isEmpty){
                 
@@ -262,11 +216,11 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
                     if let buddyComponent =  buddyEntities[i].component(ofType: BuddyComponent.self){
                         buddyComponent.shapeNode.removeFromParent()
                     } 
-
+                    
                     buddyEntities.remove(at: i)
-
+                    
                 }}
-
+            
         }
         
         self.lastUpdateTime = currentTime
@@ -275,36 +229,16 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
     
     
     //-------------Contact Delegate--------------//
-    
-    
-    func didBegin(_ contact: SKPhysicsContact) {
-        
-        guard let  a = contact.bodyA.node as? SpectrumShape else {return}
-        guard let  b = contact.bodyB.node as? SpectrumShape else {return}
-        
-        let aAttack = a.gameComponent!.hp
-        let bAttack = b.gameComponent!.hp
-        a.gameComponent!.hit(attackValue: bAttack)
-        b.gameComponent!.hit(attackValue: aAttack)
-        
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
    
     func pauseGame(){
+        scene?.isPaused = true
         scene?.speed = 0.0
         print("pause")
      
     }
     func resume(){
         //self.lastUpdateTime = Date().timeIntervalSinceReferenceDate
+        scene?.isPaused = false
         scene?.speed = 1.0
         print("resume")
     }
@@ -326,7 +260,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
     private func setupFocusEmitterComposite(){
         let left = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.leftSideFile)!
         
-        left.particleColor = currentPlayer.color
+        left.particleColor = currentPlayer.player.color
         left.particleColorSequence = nil
         left.position.x = -frame.maxX
         
@@ -334,7 +268,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
         
         let right = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.rightSideFile)!
         
-        right.particleColor = currentPlayer.color
+        right.particleColor = currentPlayer.player.color
         right.particleColorSequence = nil
         right.position.x = frame.maxX
         
@@ -342,7 +276,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
         
         let top = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.topSideFile)!
         
-        top.particleColor = currentPlayer.color
+        top.particleColor = currentPlayer.player.color
         top.particleColorSequence = nil
         top.position.y = frame.maxY
         
@@ -350,7 +284,7 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
 
         let bottom = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.bottomSideFile)!
 
-        bottom.particleColor = currentPlayer.color
+        bottom.particleColor = currentPlayer.player.color
         bottom.particleColorSequence = nil
         bottom.position.y = -frame.maxY
 
@@ -362,13 +296,13 @@ class SpectrumScene: SKScene, SKPhysicsContactDelegate, UISceneDelegate, Control
     func switchColors(){
         for emitter in focusEmitterComposite.children{
             if let emitterChange = emitter as? SKEmitterNode{
-                emitterChange.particleColor = currentPlayer.color
+                emitterChange.particleColor = currentPlayer.player.color
             }
         }
     }
     
     func switchPlayer(){
-        if(currentPlayer.name==player.name){
+        if(currentPlayer.player.name==player.player.name){
             currentPlayer = player2
             
         } else{

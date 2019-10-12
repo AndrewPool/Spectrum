@@ -7,13 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		950917EA23516C2200229713 /* GameCollisionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950917E923516C2200229713 /* GameCollisionProtocol.swift */; };
 		95108BA4234BCA38002487D5 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA2234BCA38002487D5 /* CoreDataModel.xcdatamodeld */; };
-		95108BA6234BD715002487D5 /* Vector2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA5234BD715002487D5 /* Vector2D.swift */; };
 		95108BA8234BDAE5002487D5 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA7234BDAE5002487D5 /* VectorMath.swift */; };
 		952AC1EB234DB6100065FC14 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 952AC1EA234DB6100065FC14 /* TestScene.sks */; };
 		952E97862342F60F0086F940 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97852342F60F0086F940 /* GameComponent.swift */; };
 		952E97882342F8000086F940 /* BuddyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97872342F8000086F940 /* BuddyEntity.swift */; };
-		952E978A2342FD1E0086F940 /* Deletable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97892342FD1E0086F940 /* Deletable.swift */; };
 		952E978C2342FE9A0086F940 /* BuddyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E978B2342FE9A0086F940 /* BuddyComponent.swift */; };
 		9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C367231756AB008F28C7 /* AppDelegate.swift */; };
 		9547C36A231756AB008F28C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9547C369231756AB008F28C7 /* GameScene.sks */; };
@@ -30,6 +29,8 @@
 		95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */; };
 		95B73126234FE048006E6888 /* EmitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B73125234FE048006E6888 /* EmitterHelper.swift */; };
 		95B73128234FE5B6006E6888 /* ShapeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B73127234FE5B6006E6888 /* ShapeComponent.swift */; };
+		95B7312A2350123D006E6888 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B731292350123D006E6888 /* Extensions.swift */; };
+		95B7312C235017E2006E6888 /* GamePhysicsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */; };
 		95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C273FC232D713500DDDD58 /* SpectrumShapes.swift */; };
 		95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB96062329810E007579EF /* SpawnerEntity.swift */; };
 		95DB960D232983BB007579EF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960C232983BB007579EF /* Player.swift */; };
@@ -44,13 +45,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		950917E923516C2200229713 /* GameCollisionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollisionProtocol.swift; sourceTree = "<group>"; };
 		95108BA3234BCA38002487D5 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
-		95108BA5234BD715002487D5 /* Vector2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vector2D.swift; sourceTree = "<group>"; };
 		95108BA7234BDAE5002487D5 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		952AC1EA234DB6100065FC14 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 		952E97852342F60F0086F940 /* GameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
 		952E97872342F8000086F940 /* BuddyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyEntity.swift; sourceTree = "<group>"; };
-		952E97892342FD1E0086F940 /* Deletable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deletable.swift; sourceTree = "<group>"; };
 		952E978B2342FE9A0086F940 /* BuddyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyComponent.swift; sourceTree = "<group>"; };
 		9547C364231756AB008F28C7 /* Spectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547C367231756AB008F28C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +69,8 @@
 		95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddySpawnerHelper.swift; sourceTree = "<group>"; };
 		95B73125234FE048006E6888 /* EmitterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmitterHelper.swift; sourceTree = "<group>"; };
 		95B73127234FE5B6006E6888 /* ShapeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeComponent.swift; sourceTree = "<group>"; };
+		95B731292350123D006E6888 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePhysicsDelegate.swift; sourceTree = "<group>"; };
 		95C273FC232D713500DDDD58 /* SpectrumShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumShapes.swift; sourceTree = "<group>"; };
 		95DB96062329810E007579EF /* SpawnerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerEntity.swift; sourceTree = "<group>"; };
 		95DB960C232983BB007579EF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
@@ -120,6 +122,7 @@
 			children = (
 				9564F6A42342EA6300420557 /* Constants.swift */,
 				95C273FC232D713500DDDD58 /* SpectrumShapes.swift */,
+				95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -162,8 +165,8 @@
 			children = (
 				95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */,
 				95108BA7234BDAE5002487D5 /* VectorMath.swift */,
-				95108BA5234BD715002487D5 /* Vector2D.swift */,
 				95B73125234FE048006E6888 /* EmitterHelper.swift */,
+				95B731292350123D006E6888 /* Extensions.swift */,
 			);
 			path = "Helper Classes and Extensions";
 			sourceTree = "<group>";
@@ -171,8 +174,8 @@
 		95886F78234FD7D7005E6787 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				952E97892342FD1E0086F940 /* Deletable.swift */,
 				9576D79D2339647600615E7D /* ControlDelagate.swift */,
+				950917E923516C2200229713 /* GameCollisionProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -316,20 +319,21 @@
 				95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */,
 				952E97882342F8000086F940 /* BuddyEntity.swift in Sources */,
 				9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */,
+				950917EA23516C2200229713 /* GameCollisionProtocol.swift in Sources */,
 				95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */,
 				9576D7A0233987A300615E7D /* StartGameDelegate.swift in Sources */,
 				9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */,
 				9547C370231756AB008F28C7 /* GameViewController.swift in Sources */,
 				95108BA4234BCA38002487D5 /* CoreDataModel.xcdatamodeld in Sources */,
+				95B7312A2350123D006E6888 /* Extensions.swift in Sources */,
 				952E978C2342FE9A0086F940 /* BuddyComponent.swift in Sources */,
 				956FC6662340388E001DC850 /* ControlComponent.swift in Sources */,
 				95B73128234FE5B6006E6888 /* ShapeComponent.swift in Sources */,
-				95108BA6234BD715002487D5 /* Vector2D.swift in Sources */,
 				95108BA8234BDAE5002487D5 /* VectorMath.swift in Sources */,
 				9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */,
 				952E97862342F60F0086F940 /* GameComponent.swift in Sources */,
-				952E978A2342FD1E0086F940 /* Deletable.swift in Sources */,
 				95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */,
+				95B7312C235017E2006E6888 /* GamePhysicsDelegate.swift in Sources */,
 				95DB960D232983BB007579EF /* Player.swift in Sources */,
 				9564F6A52342EA6300420557 /* Constants.swift in Sources */,
 				956FC6642340357A001DC850 /* SpawnerComponent.swift in Sources */,

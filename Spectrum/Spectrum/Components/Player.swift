@@ -10,8 +10,12 @@
 import UIKit
 import GameKit
 
+//player component should never call entity! because it has multiple entities!
 class PlayerComponent: GKComponent{
-    
+    //enforces the never call entity rule
+    override var entity: GKEntity? {
+        get{nil}
+    }
     var player : Player
     
     init(player:Player) {

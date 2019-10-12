@@ -31,6 +31,8 @@
 //  SOFTWARE.
 //
 
+//this is andy, i have added a section in the middle with my own code to make gamekit playnice
+
 import Foundation
 import GameKit
 
@@ -69,6 +71,13 @@ public extension Scalar {
     }
 }
 //andy's extensions to Vector2:P{
+
+public extension CGVector{
+    init(_ vector2:Vector2){
+        self.init(dx: CGFloat(vector2.x),dy: CGFloat(vector2.y))
+    }
+}
+
 public extension Vector2{
     init(_ p:CGPoint){
         self.init( x:Scalar(p.x), y: Scalar(p.y) )
@@ -77,19 +86,11 @@ public extension Vector2{
         self.init( x: Scalar(v.dx), y: Scalar(v.dy))
     }
     func slowedTo(_ s:Scalar)->Vector2{
-        //
-      //  print("\(self.length) before1")
         let length = self.length
         if ( length > Scalar(s)){
-            // print("happeenend!")
             let new = self.normalized()*s
-            //print("\(new.length) after1")
-           // print("")
             return new
-            
         }
-        
-        
         return self
     }
 }

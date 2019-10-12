@@ -9,12 +9,13 @@ import GameKit
 
 class BuddyComponent: GKComponent{
     
-    weak var buddyEntity : BuddyEntity!//must set up imediatly
+    //cache value,! note the weakness! don't make this mistake!
     weak var shapeNode : SpectrumShape!
-  //  weak var gameComponent : GameComponent
+ 
     //-------------update and helpers----------------------
    
-    private var strength:Scalar = 30.0
+    //TODO move somewhere else
+    private var strength:Scalar = 40.0
     private var strength2:Scalar = 60.0
     
     override func update(deltaTime seconds: TimeInterval) {
@@ -25,8 +26,8 @@ class BuddyComponent: GKComponent{
     private func doSomeThing(){
 
         guard let currentVelocity = shapeNode.physicsBody?.velocity else {return}
-
-        let focus = Vector2(buddyEntity.owner.focus)
+       
+        let focus = Vector2(buddyEntity().owner.focus)
         
         let selfLocation = Vector2(shapeNode.position)
                
@@ -39,11 +40,7 @@ class BuddyComponent: GKComponent{
     }
     
 
-    func setEntity(){
-        let parent = entity as! BuddyEntity
-        buddyEntity = parent
-        
-    }
+    
     
     
     

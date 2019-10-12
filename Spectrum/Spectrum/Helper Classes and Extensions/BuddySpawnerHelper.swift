@@ -10,17 +10,17 @@ import Foundation
 import GameKit
 
 extension SpawnerEntity {
-    
+    //this is a jumbled mess
     func buddyForSpawner()->Void{
         //
         let buddy = BuddyEntity(owner: self)
         scene.buddyEntities.append(buddy)
         
-        let buddyComponent = BuddyComponent()//shape: shapeComponent.shapeNode.shape, player: playerComponent.player, size: Constants.Buddy.size , scene: scene)
+        let buddyComponent = BuddyComponent()
         buddy.addComponent(buddyComponent)
         
-        buddyComponent.setEntity()
-      
+        buddy.addComponent(playerComponent)
+        
         let gameComponent = GameComponent(10)
         buddy.addComponent(gameComponent)
         scene.gameSystem.addComponent(gameComponent)
@@ -30,12 +30,12 @@ extension SpawnerEntity {
         newShapeComponent.shapeNode.position = shapeComponent.shapeNode.position
         newShapeComponent.shapeNode.setUpCollisionAsBuddy()
         newShapeComponent.shapeNode.addToScene(scene)
-        newShapeComponent.shapeNode.startMoveAction(to: focus)
+       
         newShapeComponent.shapeNode.gameComponent = gameComponent
         buddy.addComponent(newShapeComponent)
         
         buddyComponent.shapeNode = newShapeComponent.shapeNode
-        buddyComponent.shapeNode.gameComponent = gameComponent
+        buddyComponent.shapeNode.gameComponent = gameComponent//don't freak out, this is a cache!
         
      
         buddy.owner = self

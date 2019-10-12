@@ -44,7 +44,7 @@ class SpectrumShape : SKShapeNode {
     let outlineColor = UIColor.red
     let inlineColor = UIColor.purple
     //cashe value
-    weak var gameComponent : GameComponent!
+    var gameComponent : GameCollisionProtocol!
 
     //--------inits and set up funcs below------------------
     //todo this only does circles
@@ -112,10 +112,5 @@ class SpectrumShape : SKShapeNode {
         run(smallThenBigSequenceForever)//and back again forever
     }
 
-    func startMoveAction(to:CGPoint){
-        
-//
-//        physicsBody?.applyImpulse(CGVector(dx: (to.x-position.x)/100, dy: (to.y-position.y)/100))
-    }
-    
+  
 }

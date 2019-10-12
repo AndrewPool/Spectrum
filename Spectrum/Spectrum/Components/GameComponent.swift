@@ -8,24 +8,34 @@
 
 import GameKit
 
-class GameComponent: GKComponent{
+class GameComponent: GKComponent, GameCollisionProtocol{
     
     var hp = 10
     
-    func getStatsForCollision()->Int{
+    var contextPlayer: PlayerComponent!
+    
+    func attack() -> Int {
         return hp
+    }
+    func player() -> PlayerComponent {
+
+        return (entity?.component(ofType: PlayerComponent.self)!)!
     }
     
     //we can do some closure shit here
-    func hit(attackValue: Int){
-        hp -= attackValue
+    func hit(player: PlayerComponent,attack: Int){
+        
+        hp -= attack
         if(hp<0){
-                 hp = 0
-             }
+            hp = 0
+        }
+    }
+    private func getPlayerComponent()->PlayerComponent{
+        return ((entity?.component(ofType: PlayerComponent.self))!)
     }
     override func update(deltaTime seconds: TimeInterval) {
-       //print(hp)
-     
+        //print(hp)
+        
     }
     
     convenience init(_ hp:Int){
@@ -34,8 +44,9 @@ class GameComponent: GKComponent{
         self.hp = hp
     }
     override init(){
-        
+  
         super.init()
+        
     }
     
     required init?(coder: NSCoder) {
