@@ -18,9 +18,10 @@ extension GKComponent{
         return nil
     }
     func spawnerEntity()->SpawnerEntity{
-        entity as! SpawnerEntity
+         entity as! SpawnerEntity
     }
     func buddyEntity()->BuddyEntity{
         entity as! BuddyEntity
     }
 }
+

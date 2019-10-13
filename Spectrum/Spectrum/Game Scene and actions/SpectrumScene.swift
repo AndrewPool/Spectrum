@@ -28,7 +28,7 @@ enum State{
 }
 
 
-class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
+class SpectrumScene: SKScene, UISceneDelegate {
     
     
     var spawnerEntities = [SpawnerEntity]()
@@ -39,12 +39,17 @@ class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
     
     private var state : State!{didSet{state.changedState(for: self)}}
     
+    let neutralPlayer = PlayerComponent(player: Player())
     
     let player = PlayerComponent(player: Player(name: "andy", key: PhysicsKey.player1))
     //
     let player2 = PlayerComponent(player: Player(name: "jamie", key: PhysicsKey.player2, color:UIColor.yellow))
     //
     var currentPlayer : PlayerComponent!
+    
+    lazy var background: SKNode = {
+        return SKNode()
+    }()
     
     
     //this toggles the selected property of ControlDelegate thus letting it know to stop doing whatever it was doing as focused, and letting the new one to start
@@ -56,15 +61,17 @@ class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
     var selected = false {didSet{toggleSelected(isTrue:selected)}}
     
     
-    private var lastUpdateTime : TimeInterval = 0
-    
     
     private var physicsDelegate : GamePhysicsDelegate!//i need a pointer to this
+    
     private var pauseButton : SKSpriteNode?
   
-    private var focusEmitterComposite = SKNode()
+    var focusEmitterComposite = SKNode()
+    
     
     //game state
+    
+    private var lastUpdateTime : TimeInterval = 0
     
     private var spawnInterval = Constants.Spawner.pulseSpeedInterval
    
@@ -92,85 +99,13 @@ class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
         physicsBody!.restitution = 1
         physicsBody!.friction = 0
         
-    
+        setupBackground()
        
     }
-    
+   
     //----------------scene did load aboce----------------
     
-    
-    
-  
-    
-    
-    
-    //-----------------touches and stuff below------------
-    
-    
-    //these are called by the game engine, we might one day do event type checking here and what not, but right now it passes on the touch along with the scene to the delegate, and the delegate does what it wants, in the context
-    // the first context is the StartUpDelegate one that's only implementation is that when touch begins, it calls gameScene.setUpGame()
-    // we may or maynot require something something something
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesBegan")
-        
-        if (controlDelegate != nil){
-            controlDelegate!.touchesBegan(touches: touches)
-            
-        }
-        
-        
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (controlDelegate != nil){controlDelegate!.touchesMoved(touches: touches)}
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (controlDelegate != nil){controlDelegate!.touchesEnded(touches: touches)}
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (controlDelegate != nil){controlDelegate!.touchesCancelled(touches: touches)}
-    }
-    
-    
-    // the game scene is the root delegate!
-    //it passes off control to it's children, and when they're done they give it back. i think, hopefully
-    
-    
-    // these are the default calls durring the game loop object is to select the next thing
-    
-    func touchesBegan(touches: Set<UITouch>) {
-        
-        print("spectrum scene self control delegate touchesBegan()")
-        
-    }
-    
-    func touchesMoved(touches: Set<UITouch>) {
-        
-    }
-    //TODO
-    func touchesEnded(touches: Set<UITouch>) {
-        if let touch = touches.first{
-            let location = touch.location(in: self)
-            for spawner in spawnerEntities{
-                if (spawner.playerComponent.player.physicsKey == currentPlayer.player.physicsKey){
-                    if (spawner.shapeComponent.shapeNode.contains(location)){
-                        
-                        controlDelegate = spawner.controlComponent
-                        
-                    }
-                }
-                
-            }
-        }
-    }
-    func touchesCancelled(touches: Set<UITouch>) {
-        
-    }
-    
-    //-----------------touches and helpers and ControlDelegate above--------------
-    
+
     
     
     
@@ -228,7 +163,6 @@ class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
     //-------------update above-------------------
     
     
-    //-------------Contact Delegate--------------//
    
     func pauseGame(){
         scene?.isPaused = true
@@ -245,61 +179,10 @@ class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
     
     
     
-    //selected sets up the focus emmitter, or it doesn't
+    func sceneWillResignActive(_ scene: UIScene) {
+        physicsWorld.gravity = CGVector(dx: 100, dy: 100)
+    }
     
-    private func toggleSelected(isTrue:Bool){
-        if(isTrue){
-        
-        addChild(focusEmitterComposite)
-        
-        } else {
-            focusEmitterComposite.removeFromParent()
-        }
-        
-    }
-    private func setupFocusEmitterComposite(){
-        let left = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.leftSideFile)!
-        
-        left.particleColor = currentPlayer.player.color
-        left.particleColorSequence = nil
-        left.position.x = -frame.maxX
-        
-        focusEmitterComposite.addChild(left)
-        
-        let right = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.rightSideFile)!
-        
-        right.particleColor = currentPlayer.player.color
-        right.particleColorSequence = nil
-        right.position.x = frame.maxX
-        
-        focusEmitterComposite.addChild(right)
-        
-        let top = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.topSideFile)!
-        
-        top.particleColor = currentPlayer.player.color
-        top.particleColorSequence = nil
-        top.position.y = frame.maxY
-        
-        focusEmitterComposite.addChild(top)
-
-        let bottom = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.bottomSideFile)!
-
-        bottom.particleColor = currentPlayer.player.color
-        bottom.particleColorSequence = nil
-        bottom.position.y = -frame.maxY
-
-        focusEmitterComposite.addChild(bottom)
-
-
-        
-    }
-    func switchColors(){
-        for emitter in focusEmitterComposite.children{
-            if let emitterChange = emitter as? SKEmitterNode{
-                emitterChange.particleColor = currentPlayer.player.color
-            }
-        }
-    }
     
     func switchPlayer(){
         if(currentPlayer.player.name==player.player.name){
@@ -311,9 +194,7 @@ class SpectrumScene: SKScene, UISceneDelegate, ControlDelegate {
         switchColors()
     }
     
-    func sceneWillResignActive(_ scene: UIScene) {
-        physicsWorld.gravity = CGVector(dx: 100, dy: 100)
-    }
+    
 }
 
 

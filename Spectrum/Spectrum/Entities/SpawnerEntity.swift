@@ -15,7 +15,7 @@ class SpawnerEntity: GKEntity{
   
     //here are some properties
     override var description: String{
-        guard let name = (component(ofType: PlayerComponent.self)?.player.name) else {return "failed description"}
+        guard let name = (component(ofType: PlayerComponent.self)?.player.name) else {return "failed description of spawner entity"}
         return name + "'s Spawner"
     }
   
@@ -34,12 +34,12 @@ class SpawnerEntity: GKEntity{
     
     //this is entity stuff, location and buddies
     var focus = CGPoint(x:0,y:0)
-
+    
     
     //
     private var shape = Shape.Circle
     
-   
+    
     //---------------------init and set up
     
     //this becomes the designated init()
@@ -50,48 +50,70 @@ class SpawnerEntity: GKEntity{
         
         
         super.init()
-        
+        //sets up the required components
+        //player
         addComponent(player)
-               self.playerComponent = player
-               
+        self.playerComponent = player
         
-        let spawnerComponent = SpawnerComponent(
-            spawnBuddyFunction: buddyForSpawner
-        )
-         addComponent(spawnerComponent)
-         self.spawnerComponent = spawnerComponent
-        
+       
+        //shape
         let shapeComponent = ShapeComponent(shape: shape, player: playerComponent.player, size: Constants.Spawner.size)
         addComponent(shapeComponent)
         self.shapeComponent = shapeComponent
         shapeComponent.shapeNode.position = position
         shapeComponent.shapeNode.addToScene(scene)
-        scene.spawningSystem.addComponent(spawnerComponent)
+        
         shapeComponent.shapeNode.startPulseAction()
       
-        
-       // let playerComponent = PlayerComponent(player: player)
        
-        let controlComponentStart  = ControlComponent()
-        addComponent(controlComponentStart)
-        controlComponent=controlComponentStart
+    }
+    private func setShape(){
         
-        let gameComponent = GameComponent(100)
-        addComponent(gameComponent)
-        shapeComponent.shapeNode.gameComponent = gameComponent
-        scene.gameSystem.addComponent(gameComponent)
-        
-       
     }
    
  
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func addSpawnerComponent(){
+        //spawner
+        guard spawnerComponent == nil else {return}
+        let spawnerComponent = SpawnerComponent(
+            spawnBuddyFunction: buddyForSpawner
+        )
+        addComponent(spawnerComponent)
+        self.spawnerComponent = spawnerComponent
+        scene.spawningSystem.addComponent(spawnerComponent)
+        
+    }
+    func addControlComponent(){
+        
+        let controlComponentStart  = ControlComponent()
+        addComponent(controlComponentStart)
+        controlComponent=controlComponentStart
+        
+    }
+    func addGameComponent(){
+        
+        
+        let gameComponent = GameComponent(Constants.Spawner.hp , flavor: .spawner,player: playerComponent)
+        addComponent(gameComponent)
+        shapeComponent.shapeNode.gameComponent = gameComponent
+        scene.gameSystem.addComponent(gameComponent)
+        
+    }
 
        //-----------------init and setup above
   
-    
+    //changeing people
+    func configPlayer(){
+        print("config")
+        playerComponent = component(ofType: PlayerComponent.self)
+        shapeComponent.shapeNode.configWithPlayer(player: playerComponent.player)
+        shapeComponent.shapeNode.setUpCollisionAsSpawner()
+        
+    }
     
     //-------------update and helpers----------------------
   

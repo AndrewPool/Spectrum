@@ -10,6 +10,6 @@ import Foundation
 
 protocol GameCollisionProtocol {
     func player()->PlayerComponent
-    func attack()->Int
+    func attack(player:PlayerComponent)->Int
     func hit(player:PlayerComponent, attack:Int)
 }

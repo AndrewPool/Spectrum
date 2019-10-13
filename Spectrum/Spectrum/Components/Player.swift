@@ -26,6 +26,17 @@ class PlayerComponent: GKComponent{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+//    override func willRemoveFromEntity() {
+//        
+//    }
+//    override func didAddToEntity() {
+//        guard let e = entity as? SpawnerEntity else {
+//            //print("faildidaddtoentity, cause buddy")
+//            return
+//        }
+//        e.configPlayer()
+//        
+//    }
     
 }
 

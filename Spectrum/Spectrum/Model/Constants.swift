@@ -29,6 +29,7 @@ struct Constants{
         
         //static let spawnInterval = 2.0;
         static let size = 100;
+        static let hp = 100
         struct Focus{
                static let size = 110
                static let emitterFile = "FocusFire.sks"
@@ -112,7 +113,7 @@ enum PhysicsKey{
     }
     //for buddies
     func setupCollisionParamaters(buddy:SKPhysicsBody){
-        buddy.restitution = 0.4
+        buddy.restitution = 0.1
         buddy.friction = 0.1
         buddy.allowsRotation = false
         switch self{

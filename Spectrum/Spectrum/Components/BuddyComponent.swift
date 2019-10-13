@@ -17,6 +17,7 @@ class BuddyComponent: GKComponent{
     //TODO move somewhere else
     private var strength:Scalar = 40.0
     private var strength2:Scalar = 60.0
+   // private let randomFactor = 0.9...0.1
     
     override func update(deltaTime seconds: TimeInterval) {
        doSomeThing()
@@ -34,8 +35,11 @@ class BuddyComponent: GKComponent{
         let lineBetween = (focus - selfLocation).normalized()*strength
         
         let newVelocity = (Vector2(currentVelocity) + lineBetween).slowedTo(strength2)
-           
-        shapeNode.physicsBody?.velocity = (CGVector(dx: CGFloat(newVelocity.x), dy: CGFloat(newVelocity.y)))
+        
+        let randomized = Vector2(x: newVelocity.x*Float.random(in: 0.9...1.1), y: newVelocity.y*Float.random(in: 0.9...1.1))
+        
+        
+        shapeNode.physicsBody?.velocity = (CGVector(dx: CGFloat(randomized.x), dy: CGFloat(randomized.y)))
 
     }
     

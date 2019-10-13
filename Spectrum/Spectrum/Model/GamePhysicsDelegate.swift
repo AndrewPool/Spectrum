@@ -20,10 +20,11 @@ class GamePhysicsDelegate: NSObject, SKPhysicsContactDelegate {
         let bGameComp = b.gameComponent! //as! GameCollisionProtocol
         
         //only need to cache the first one, not both
-        let aAttack = aGameComp.attack()
+        let aAttack = aGameComp.attack(player: bGameComp.player())
+        let bAttack = bGameComp.attack(player: aGameComp.player())
         let aPlayer = aGameComp.player()
         
-        aGameComp.hit(player: bGameComp.player(), attack: bGameComp.attack())
+        aGameComp.hit(player: bGameComp.player(), attack: bAttack)
         bGameComp.hit(player: aPlayer, attack: aAttack)
     }
     

@@ -36,8 +36,8 @@ class SpectrumShape : SKShapeNode {
     
     let shape : Shape
     
-   // private var position = CGPoint(x: 100, y: 100)
-    private var player:Player
+  
+    private var player:Player!//this is set in init still!! maybe...
     private var size:Int
     //shape color and stuff`
     let strokeWidth = 5
@@ -52,7 +52,7 @@ class SpectrumShape : SKShapeNode {
         
        
         self.shape = shape
-        self.player = player
+       
         self.size = size
         
         // let circlePath = CGPath(rect: , transform: nil)
@@ -60,18 +60,21 @@ class SpectrumShape : SKShapeNode {
         super.init()
         
         path = shape.getPath(size: size)
-        zPosition = CGFloat(Constants.Layers.player)
+       
         lineWidth = CGFloat(strokeWidth)
-        fillColor = player.color
+       
         strokeColor = inlineColor
         isUserInteractionEnabled = false// looks like this needs to be in the init
         
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
-        player.physicsKey.setupCollisionParamaters(buddy:physicsBody!)
-        
+       configWithPlayer(player: player)
         
     }
-    
+    func configWithPlayer(player:Player){
+         zPosition = CGFloat(Constants.Layers.player)
+         fillColor = player.color
+         self.player = player
+    }
     
  
     //this should be called imediatly after init()
@@ -82,8 +85,8 @@ class SpectrumShape : SKShapeNode {
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size)/2)
         physicsBody!.isDynamic = false
         player.physicsKey.setupCollisionParamaters(spawner:physicsBody!)
-       
-              
+        
+        
         
     }
     func setUpCollisionAsBuddy(){

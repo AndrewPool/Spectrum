@@ -8,44 +8,106 @@
 
 import GameKit
 
+//hardest part of programming right here.
+enum Flavor{
+    case spawner
+    case buddy
+}
+
+//this player shit is way too complicated
 class GameComponent: GKComponent, GameCollisionProtocol{
     
-    var hp = 10
+    func player() -> PlayerComponent {
+        (self.entity?.component(ofType: PlayerComponent.self)!)!
+    }
     
+    
+    var maxhp = Constants.Spawner.hp
+    var hp : Int
+    
+    // private var hitFunction
     var contextPlayer: PlayerComponent!
     
-    func attack() -> Int {
-        return hp
-    }
-    func player() -> PlayerComponent {
-
-        return (entity?.component(ofType: PlayerComponent.self)!)!
+    private var hitFunction:((PlayerComponent, Int)->Void)!
+    private var attackFunction:((PlayerComponent)->Int)!
+    
+    func attack(player:PlayerComponent) -> Int {
+        return attackFunction(player)
     }
     
     //we can do some closure shit here
     func hit(player: PlayerComponent,attack: Int){
+        hitFunction(player, attack)
+    }
+    
+    private func buddyAttack(player:PlayerComponent)->Int{
+        if(player==self.player()){
+            return 0
+        }else{
+            return hp
+        }
+    }
+    private func spawnerAttack(player:PlayerComponent)->Int{
+        if(player==self.player()){
+            return 0
+        }else{
+            return Constants.Spawner.hp
+        }
+    }
+    private func spawnerHit(player: PlayerComponent,attack: Int){
+        if(player==contextPlayer){
+            hp += attack
+            if hp == Constants.Spawner.hp{
+                
+                entity?.removeComponent(ofType: PlayerComponent.self)
+                entity?.addComponent(player)
+                
+                entity?.removeComponent(ofType: ControlComponent.self)
+                spawnerEntity().addControlComponent()
+                //entity?.removeComponent(ofType: GameComponent.self)
+                refresh()
+                //
+                spawnerEntity().addSpawnerComponent()
+                spawnerEntity().configPlayer()
+                print("Happenedning!!!")
+            }
+        } else {
+            hp -= attack
+            if(hp<0){
+                contextPlayer=player
+            }
+        }
         
+    }
+    private func buddyHit(player: PlayerComponent,attack: Int){
         hp -= attack
         if(hp<0){
             hp = 0
         }
+        
     }
-    private func getPlayerComponent()->PlayerComponent{
-        return ((entity?.component(ofType: PlayerComponent.self))!)
+    private func refresh(){
+        hp=Constants.Spawner.hp
     }
     override func update(deltaTime seconds: TimeInterval) {
         //print(hp)
         
     }
     
-    convenience init(_ hp:Int){
+    init(_ hp:Int, flavor: Flavor, player:PlayerComponent){
         
-        self.init()
         self.hp = hp
-    }
-    override init(){
-  
+        contextPlayer = player
         super.init()
+        switch flavor {
+        case .buddy:
+            hitFunction = buddyHit
+            attackFunction = buddyAttack(player:)
+        case .spawner:
+            hitFunction = spawnerHit
+            attackFunction = spawnerAttack(player:)
+            
+        }
         
     }
     

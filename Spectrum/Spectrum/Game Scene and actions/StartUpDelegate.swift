@@ -60,10 +60,10 @@ class StartUpDelegate:SKNode, ControlDelegate{
         print("setting up game")
         
         
-        addSpawner(at: CGPoint(x: 150, y: 200))
-       addSpawner(at: CGPoint(x:-150, y: -200))
-        addSpawner2(at: CGPoint(x:150, y:-200))
-        addSpawner2(at: CGPoint(x:-150, y:200))
+        addSpawner(at: CGPoint(x: 150, y: 200),with:gameScene.player)
+        addSpawner(at: CGPoint(x:-150, y: -200),with:gameScene.player)
+        addSpawner(at: CGPoint(x:150, y:-200),with:gameScene.player2)
+        addSpawner(at: CGPoint(x:-150, y:200),with:gameScene.player2)
         addNeutralSpawner(at: CGPoint(x:-300, y: 0))
         addNeutralSpawner(at: CGPoint(x:300, y: 0))
         addNeutralSpawner(at: CGPoint(x:0, y: -300))
@@ -74,21 +74,18 @@ class StartUpDelegate:SKNode, ControlDelegate{
     private func addNeutralSpawner(at location:CGPoint){
         let spawner = SpawnerEntity(scene: gameScene, player:gameScene.neutralPlayer, location:location)
         gameScene.spawnerEntities.append(spawner)
+        spawner.addGameComponent()
     }
     //gets called at set up game()\
-    private func addSpawner(at location:CGPoint){
+    private func addSpawner(at location:CGPoint, with player:PlayerComponent){
         
-        let spawner = SpawnerEntity(scene: gameScene, player:gameScene.player, location: location)
+        let spawner = SpawnerEntity(scene: gameScene, player:player, location: location)
         
+        spawner.addGameComponent()
+        spawner.addControlComponent()
+        spawner.addSpawnerComponent()
         gameScene.spawnerEntities.append(spawner)
         
-        
-    }
-    private func addSpawner2(at location:CGPoint){
-        
-        let spawner = SpawnerEntity(scene: gameScene,  player:gameScene.player2, location: location)
-        
-        gameScene.spawnerEntities.append(spawner)
         
     }
     

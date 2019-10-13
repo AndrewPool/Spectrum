@@ -21,7 +21,7 @@ extension SpawnerEntity {
         
         buddy.addComponent(playerComponent)
         
-        let gameComponent = GameComponent(10)
+        let gameComponent = GameComponent(10 , flavor: .buddy, player: playerComponent)
         buddy.addComponent(gameComponent)
         scene.gameSystem.addComponent(gameComponent)
         
