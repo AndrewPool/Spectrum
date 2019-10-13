@@ -30,7 +30,7 @@ class GameComponent: GKComponent, GameCollisionProtocol{
     
     private var hitFunction:((PlayerComponent, Int)->Void)!
     private var attackFunction:((PlayerComponent)->Int)!
-    
+    private var passiveUpdate:()->Void = {}
     func attack(player:PlayerComponent) -> Int {
         return attackFunction(player)
     }
@@ -74,6 +74,7 @@ class GameComponent: GKComponent, GameCollisionProtocol{
         } else {
             hp -= attack
             if(hp<0){
+                hp = 0
                 contextPlayer=player
             }
         }
@@ -90,8 +91,11 @@ class GameComponent: GKComponent, GameCollisionProtocol{
         hp=Constants.Spawner.hp
     }
     override func update(deltaTime seconds: TimeInterval) {
-        //print(hp)
-        
+       passiveUpdate()
+    }
+    private func spawerUpdate()->Void{
+        print(hp)
+               
     }
     
     init(_ hp:Int, flavor: Flavor, player:PlayerComponent){
@@ -103,10 +107,11 @@ class GameComponent: GKComponent, GameCollisionProtocol{
         case .buddy:
             hitFunction = buddyHit
             attackFunction = buddyAttack(player:)
+            //passiveUpdate = {}
         case .spawner:
             hitFunction = spawnerHit
             attackFunction = spawnerAttack(player:)
-            
+            passiveUpdate = {print(hp)}
         }
         
     }

@@ -8,6 +8,7 @@
 
 import GameKit
 extension SpectrumScene{
+    
     func setupBackground(){
         
         let gradient = SKSpriteNode(color: UIColor.purple, size: frame.size)

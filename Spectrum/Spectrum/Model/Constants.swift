@@ -29,9 +29,9 @@ struct Constants{
         
         //static let spawnInterval = 2.0;
         static let size = 100;
-        static let hp = 100
+        static let hp = 10
         struct Focus{
-               static let size = 110
+               static let size = 10
                static let emitterFile = "FocusFire.sks"
                static let emitterName = "Focus Fire"
            }

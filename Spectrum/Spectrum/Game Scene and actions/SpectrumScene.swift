@@ -9,25 +9,6 @@
 import SpriteKit
 import GameplayKit
 
-enum State{
-    
-    case intro
-    case playing
-    //case paused
-    //case over
-    //i should use a state machine  for this, but i think it'll be fine.
-    func changedState(for scene:SpectrumScene){
-        switch (self){
-        case .intro: scene.controlDelegate = StartUpDelegate(scene: scene)
-            return
-        case .playing: scene.controlDelegate = scene
-            //case .paused : physicsDelegate.speed = 0.0
-        }
-    }
-    
-}
-
-
 class SpectrumScene: SKScene, UISceneDelegate {
     
     
@@ -37,7 +18,7 @@ class SpectrumScene: SKScene, UISceneDelegate {
     let spawningSystem = GKComponentSystem(componentClass: SpawnerComponent.self)
     let gameSystem = GKComponentSystem(componentClass: GameComponent.self)
     
-    private var state : State!{didSet{state.changedState(for: self)}}
+    //var state : State!{didSet{state.changedState(for: self)}}
     
     let neutralPlayer = PlayerComponent(player: Player())
     
@@ -93,8 +74,8 @@ class SpectrumScene: SKScene, UISceneDelegate {
         physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
          
         setupFocusEmitterComposite()
-        state = .intro
-        
+       
+        controlDelegate = StartUpDelegate(scene: self)
         physicsBody = SKPhysicsBody(edgeLoopFrom: frame)
         physicsBody!.restitution = 1
         physicsBody!.friction = 0
@@ -129,20 +110,35 @@ class SpectrumScene: SKScene, UISceneDelegate {
         if buddypulseIntervalCount <= 0{
             buddypulseIntervalCount = buddypulseInterval
             for entity in buddyEntities{
-                
                 //i should note that deltatimeshouldn't be used here as  such.
-                    entity.update(deltaTime: deltaTime)
-                        }
+                entity.update(deltaTime: deltaTime)
+            }
         }
         
-        
-        
-    
-        // Calculate time since last update
-        // let dt = currentTime - self.lastUpdateTime
+        print("updating")
         spawningSystem.update(deltaTime: deltaTime)
         gameSystem.update(deltaTime: deltaTime)
         
+        
+        //print(spawnerEntities.count)
+//       // if(state == .playing){
+//            print("yes")
+//            var gameOverTest:[PlayerComponent:Int] = [spawnerEntities[0].playerComponent:1]
+//
+//            for e in spawnerEntities{
+//                if gameOverTest.contains(where: { $0.key == e.playerComponent
+//                }){
+//                    gameOverTest[e.playerComponent] = gameOverTest[e.playerComponent]! + 1
+//                } else {
+//                    gameOverTest[e.playerComponent] = 1
+//                }
+//            }
+//            if gameOverTest.keys.count == 1 {
+//                print("over")
+//              //  pauseGame()
+//            }
+
+       // }
         //delete dead stuff
         for i in stride(from: buddyEntities.count-1, through: 0, by: -1){
             if(!buddyEntities.isEmpty){
