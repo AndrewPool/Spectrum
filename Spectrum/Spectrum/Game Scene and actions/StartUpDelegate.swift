@@ -64,9 +64,17 @@ class StartUpDelegate:SKNode, ControlDelegate{
        addSpawner(at: CGPoint(x:-150, y: -200))
         addSpawner2(at: CGPoint(x:150, y:-200))
         addSpawner2(at: CGPoint(x:-150, y:200))
+        addNeutralSpawner(at: CGPoint(x:-300, y: 0))
+        addNeutralSpawner(at: CGPoint(x:300, y: 0))
+        addNeutralSpawner(at: CGPoint(x:0, y: -300))
+        addNeutralSpawner(at: CGPoint(x:0, y: 300))
         gameScene.controlDelegate = gameScene
     }
     
+    private func addNeutralSpawner(at location:CGPoint){
+        let spawner = SpawnerEntity(scene: gameScene, player:gameScene.neutralPlayer, location:location)
+        gameScene.spawnerEntities.append(spawner)
+    }
     //gets called at set up game()\
     private func addSpawner(at location:CGPoint){
         
