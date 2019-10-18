@@ -15,6 +15,7 @@ struct Constants{
     static let computerNames = ["Hal 9000", "Terminator", "CeeThreePeeOh","Data"]
     
     struct GameSceen {
+        static let FadeOutDuration = 2.0
            struct Focus {
                static let leftSideFile = "LeftSideScreenFocusEmitter.sks"
                static let rightSideFile = "RightSideScreenFocusEmitter.sks"
@@ -34,10 +35,14 @@ struct Constants{
                static let size = 10
                static let emitterFile = "FocusFire.sks"
                static let emitterName = "Focus Fire"
+           
            }
     }
     
-   
+    struct UI{
+        static let GoArrowImageName = "GoArrow.png"
+        static let TargetImageName = "Target.png"
+    }
     
     struct Buddy {
         static let size = 20

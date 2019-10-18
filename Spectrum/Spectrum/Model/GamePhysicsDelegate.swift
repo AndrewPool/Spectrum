@@ -15,17 +15,18 @@ class GamePhysicsDelegate: NSObject, SKPhysicsContactDelegate {
         
         guard let  a = contact.bodyA.node as? SpectrumShape else {return}
         guard let  b = contact.bodyB.node as? SpectrumShape else {return}
-        
-        let aGameComp = a.gameComponent!// as? GameCollisionProtocol
-        let bGameComp = b.gameComponent! //as! GameCollisionProtocol
-        
+//        print(a)
+//        print(b)
+         let aPlayer = a.gameComponent!.player
+         let bPlayer = b.gameComponent!.player 
+              
+       
         //only need to cache the first one, not both
-        let aAttack = aGameComp.attack(player: bGameComp.player())
-        let bAttack = bGameComp.attack(player: aGameComp.player())
-        let aPlayer = aGameComp.player()
+        let aAttack = a.gameComponent!.attack(player: bPlayer)
+        let bAttack = b.gameComponent!.attack(player: aPlayer)
         
-        aGameComp.hit(player: bGameComp.player(), attack: bAttack)
-        bGameComp.hit(player: aPlayer, attack: aAttack)
+        a.gameComponent!.hit(player: bPlayer, attack: bAttack)
+        b.gameComponent!.hit(player: aPlayer, attack: aAttack)
     }
-    
+  
 }

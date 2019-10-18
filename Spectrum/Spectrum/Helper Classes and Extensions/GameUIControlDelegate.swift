@@ -18,8 +18,7 @@ extension SpectrumScene{//:UISceneDelegate
     // the first context is the StartUpDelegate one that's only implementation is that when touch begins, it calls gameScene.setUpGame()
     // we may or maynot require something something something
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchesBegan")
-        
+       
         if (controlDelegate != nil){
             controlDelegate!.touchesBegan(touches: touches)
             
@@ -29,15 +28,39 @@ extension SpectrumScene{//:UISceneDelegate
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (controlDelegate != nil){controlDelegate!.touchesMoved(touches: touches)}
+        for t in touches {
+            game.selectedControlDelegates[t]?.touchesMoved(touches: [t])
+        }
+        
+        if (controlDelegate != nil){
+            controlDelegate!.touchesMoved(touches: touches)
+            
+        }
+        
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (controlDelegate != nil){controlDelegate!.touchesEnded(touches: touches)}
+        for t in touches {
+            game.selectedControlDelegates[t]?.touchesEnded(touches: [t])
+              }
+        
+        if (controlDelegate != nil){
+            controlDelegate!.touchesEnded(touches: touches)
+            
+        }
+        
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if (controlDelegate != nil){controlDelegate!.touchesCancelled(touches: touches)}
+         for t in touches {
+            game.selectedControlDelegates[t]?.touchesCancelled(touches: [t])
+              }
+        
+        if (controlDelegate != nil){
+            controlDelegate!.touchesCancelled(touches: touches)
+            
+        }
+        
     }
     
     

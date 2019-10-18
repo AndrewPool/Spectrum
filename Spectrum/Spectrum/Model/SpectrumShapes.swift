@@ -65,9 +65,7 @@ class SpectrumShape : SKShapeNode {
        
         strokeColor = inlineColor
         isUserInteractionEnabled = false// looks like this needs to be in the init
-        
-        physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
-       configWithPlayer(player: player)
+     configWithPlayer(player: player)
         
     }
     func configWithPlayer(player:Player){
@@ -78,10 +76,13 @@ class SpectrumShape : SKShapeNode {
     
  
     //this should be called imediatly after init()
-    func addToScene(_ scene: SKScene){
-        scene.addChild(self)
+    func addToScene(_ scene: SpectrumScene){
+        scene.game.node.addChild(self)
     }
     func setUpCollisionAsSpawner(){
+        
+            physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
+          
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size)/2)
         physicsBody!.isDynamic = false
         player.physicsKey.setupCollisionParamaters(spawner:physicsBody!)
@@ -90,6 +91,9 @@ class SpectrumShape : SKShapeNode {
         
     }
     func setUpCollisionAsBuddy(){
+        
+            physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
+         
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size)/2)
          
         player.physicsKey.setupCollisionParamaters(buddy:physicsBody!)

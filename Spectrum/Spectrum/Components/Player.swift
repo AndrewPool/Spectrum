@@ -11,11 +11,11 @@ import UIKit
 import GameKit
 
 //player component should never call entity! because it has multiple entities!
+//It is also stashed on the scene! so it new goes away!
 class PlayerComponent: GKComponent{
     //enforces the never call entity rule
-    override var entity: GKEntity? {
-        get{nil}
-    }
+    override var entity: GKEntity? {get{nil}}
+    
     var player : Player
     
     init(player:Player) {
@@ -26,17 +26,6 @@ class PlayerComponent: GKComponent{
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-//    override func willRemoveFromEntity() {
-//        
-//    }
-//    override func didAddToEntity() {
-//        guard let e = entity as? SpawnerEntity else {
-//            //print("faildidaddtoentity, cause buddy")
-//            return
-//        }
-//        e.configPlayer()
-//        
-//    }
     
 }
 
@@ -46,7 +35,7 @@ struct Player{
     let computer:Bool
     let name:String
     let color:UIColor
-    init(name:String, key:PhysicsKey, color:UIColor){
+    init( name:String, key:PhysicsKey, color:UIColor){
         self.color = color
         computer = false
         self.name = name

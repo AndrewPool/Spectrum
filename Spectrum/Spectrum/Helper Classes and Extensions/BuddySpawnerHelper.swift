@@ -14,7 +14,7 @@ extension SpawnerEntity {
     func buddyForSpawner()->Void{
         //
         let buddy = BuddyEntity(owner: self)
-        scene.buddyEntities.append(buddy)
+        scene.game.buddyEntities.append(buddy)
         
         let buddyComponent = BuddyComponent()
         buddy.addComponent(buddyComponent)
@@ -23,7 +23,7 @@ extension SpawnerEntity {
         
         let gameComponent = GameComponent(10 , flavor: .buddy, player: playerComponent)
         buddy.addComponent(gameComponent)
-        scene.gameSystem.addComponent(gameComponent)
+        scene.game.gameSystem.addComponent(gameComponent)
         
         let newShapeComponent = ShapeComponent(shape: .Circle, player: playerComponent.player, size: Constants.Buddy.size)
         
@@ -36,7 +36,7 @@ extension SpawnerEntity {
         
         buddyComponent.shapeNode = newShapeComponent.shapeNode
         buddyComponent.shapeNode.gameComponent = gameComponent//don't freak out, this is a cache!
-        
+        buddyComponent.shapeNode.physicsBody?.velocity = CGVector(dx: 0.01, dy: 0.01)
      
         buddy.owner = self
     }

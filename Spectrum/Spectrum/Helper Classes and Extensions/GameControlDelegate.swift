@@ -19,7 +19,23 @@ extension SpectrumScene:ControlDelegate{
     func touchesBegan(touches: Set<UITouch>) {
         
         print("spectrum scene self control delegate touchesBegan()")
-        
+        if let touch = touches.first{
+            let location = touch.location(in: self)
+            for spawner in game.spawnerEntities{
+                if  let cc = spawner.controlComponent {
+                    // ( spawner.playerComponent.player.physicsKey == currentPlayer.player.physicsKey) &&
+                 
+                    if (!cc.selected && spawner.target.contains(location)){
+                        
+                        cc.selected = true
+                        game.selectedControlDelegates[touch] = cc
+                        //controlDelegate = spawner.controlComponent
+                        return//only do one per tap!
+                    }
+                }
+                
+            }
+        }
     }
     
     func touchesMoved(touches: Set<UITouch>) {
@@ -27,52 +43,42 @@ extension SpectrumScene:ControlDelegate{
     }
     //TODO
     func touchesEnded(touches: Set<UITouch>) {
-        if let touch = touches.first{
-            let location = touch.location(in: self)
-            for spawner in spawnerEntities{
-                if
-                  // ( spawner.playerComponent.player.physicsKey == currentPlayer.player.physicsKey) &&
-                    (spawner.controlComponent != nil) {
-                    if (spawner.shapeComponent.shapeNode.contains(location)){
-                        
-                        controlDelegate = spawner.controlComponent
-                        
-                    }
-                }
-                
-            }
-        }
+      
     }
     func touchesCancelled(touches: Set<UITouch>) {
         
     }
     
     
-    
-    func switchColors(){
-        for emitter in focusEmitterComposite.children{
-            if let emitterChange = emitter as? SKEmitterNode{
-                emitterChange.particleColor = currentPlayer.player.color
-            }
-        }
-    }
+//
+//    func switchColors(){
+//        for emitter in focusEmitterComposite.children{
+//            if let emitterChange = emitter as? SKEmitterNode{
+//
+//            }
+//        }
+//    }
     
     //selected sets up the focus emmitter, or it doesn't
     
     func toggleSelected(isTrue:Bool){
         if(isTrue){
-        
+        print("gamescene true")
         addChild(focusEmitterComposite)
+            updateFunc = updateGame(_:)
         
         } else {
+            print("gamescene false")
             focusEmitterComposite.removeFromParent()
+            updateFunc = {_ in}
+            
         }
         
     }
     func setupFocusEmitterComposite(){
         let left = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.leftSideFile)!
         
-        left.particleColor = currentPlayer.player.color
+        left.particleColor = player.player.color
         left.particleColorSequence = nil
         left.position.x = -frame.maxX
         
@@ -80,7 +86,7 @@ extension SpectrumScene:ControlDelegate{
         
         let right = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.rightSideFile)!
         
-        right.particleColor = currentPlayer.player.color
+        right.particleColor = player.player.color
         right.particleColorSequence = nil
         right.position.x = frame.maxX
         
@@ -88,7 +94,7 @@ extension SpectrumScene:ControlDelegate{
         
         let top = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.topSideFile)!
         
-        top.particleColor = currentPlayer.player.color
+        top.particleColor = player.player.color
         top.particleColorSequence = nil
         top.position.y = frame.maxY
         
@@ -96,7 +102,7 @@ extension SpectrumScene:ControlDelegate{
 
         let bottom = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.bottomSideFile)!
 
-        bottom.particleColor = currentPlayer.player.color
+        bottom.particleColor = player.player.color
         bottom.particleColorSequence = nil
         bottom.position.y = -frame.maxY
 

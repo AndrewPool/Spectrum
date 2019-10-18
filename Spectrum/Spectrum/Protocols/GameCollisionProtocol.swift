@@ -9,7 +9,7 @@
 import Foundation
 
 protocol GameCollisionProtocol {
-    func player()->PlayerComponent
+    var player : PlayerComponent { get set }
     func attack(player:PlayerComponent)->Int
     func hit(player:PlayerComponent, attack:Int)
 }
