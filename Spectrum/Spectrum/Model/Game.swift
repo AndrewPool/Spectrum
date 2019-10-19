@@ -26,7 +26,7 @@ struct Game{
     //dt upadte stuff
     var lastUpdateTime : TimeInterval = 0
     
-    var spawnInterval = Constants.Spawner.pulseSpeedInterval
+    let spawnInterval = Constants.Spawner.pulseSpeedInterval
     
     let buddypulseInterval = Constants.Spawner.pulseSpeedInterval/2
     
@@ -51,7 +51,7 @@ struct Game{
         
         print("new game")
         for child in node.children{
-                     
+    
                      child.run(SKAction.fadeOut(withDuration: 2.0)){
                          child.removeFromParent()
             }

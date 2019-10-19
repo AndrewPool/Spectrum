@@ -11,7 +11,7 @@ import UIKit
 import GameKit
 
 //player component should never call entity! because it has multiple entities!
-//It is also stashed on the scene! so it new goes away!
+//It is also stashed on the scene! so it never goes away!
 class PlayerComponent: GKComponent{
     //enforces the never call entity rule
     override var entity: GKEntity? {get{nil}}
@@ -30,18 +30,20 @@ class PlayerComponent: GKComponent{
 }
 
 struct Player{
-   
+    let neutral:Bool
     let physicsKey:PhysicsKey
     let computer:Bool
     let name:String
     let color:UIColor
     init( name:String, key:PhysicsKey, color:UIColor){
+       neutral = false
         self.color = color
         computer = false
         self.name = name
         physicsKey = key
     }
     init(){
+        neutral = true
         color = UIColor.orange
         computer = true
         physicsKey = PhysicsKey.neutral

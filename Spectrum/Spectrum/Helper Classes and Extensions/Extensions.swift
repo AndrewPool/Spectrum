@@ -11,7 +11,7 @@ import GameKit
 
 extension GKComponent{
     
-    
+    //this is buggy shit!
     func buddyEntity()->BuddyEntity{
         entity as! BuddyEntity
     }

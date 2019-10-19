@@ -25,9 +25,9 @@ class GameComponent: GKComponent, GameCollisionProtocol{
     
     var player: PlayerComponent
     var contextPlayer: PlayerComponent!
-    
+    //functional programming
     private var hitFunction:((PlayerComponent, Int)->Void)!
-    private var attackFunction:( (PlayerComponent)->Int)!
+    private var attackFunction:((PlayerComponent)->Int)!
     private var passiveUpdate:()->Void = {}
     
     //
@@ -35,11 +35,11 @@ class GameComponent: GKComponent, GameCollisionProtocol{
         return attackFunction(player)
     }
     
-    //we can do some closure shit here
+    
     func hit(player: PlayerComponent,attack: Int){
         hitFunction(player, attack)
     }
-    
+    //here are some implementations of attack and hit functions
     private func buddyAttack(player:PlayerComponent)->Int{
         if(player==self.player){
             return 0
@@ -77,10 +77,7 @@ class GameComponent: GKComponent, GameCollisionProtocol{
                     hp = 0
                     contextPlayer=player
                 }
-            
-            
         }
-        
     }
     private func buddyHit(player: PlayerComponent,attack: Int){
         hp -= attack
@@ -99,7 +96,9 @@ class GameComponent: GKComponent, GameCollisionProtocol{
         print(hp)
                
     }
-    
+    ///iplentation fucntions above
+    ///
+    ///-----------init------------
     init(_ hp:Int, flavor: Flavor, player:PlayerComponent){
         
         self.hp = hp

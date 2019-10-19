@@ -16,7 +16,6 @@
 		952E978C2342FE9A0086F940 /* BuddyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E978B2342FE9A0086F940 /* BuddyComponent.swift */; };
 		9533A2C323568FE600F8951E /* SKActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A2C223568FE600F8951E /* SKActions.swift */; };
 		9533A2C5235697CE00F8951E /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A2C4235697CE00F8951E /* UIHelper.swift */; };
-		9533A2C92356A40900F8951E /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9533A2C82356A40900F8951E /* HealthKit.framework */; };
 		9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C367231756AB008F28C7 /* AppDelegate.swift */; };
 		9547C36A231756AB008F28C7 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9547C369231756AB008F28C7 /* GameScene.sks */; };
 		9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C36D231756AB008F28C7 /* SpectrumScene.swift */; };
@@ -64,8 +63,6 @@
 		952E978B2342FE9A0086F940 /* BuddyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyComponent.swift; sourceTree = "<group>"; };
 		9533A2C223568FE600F8951E /* SKActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKActions.swift; sourceTree = "<group>"; };
 		9533A2C4235697CE00F8951E /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
-		9533A2C62356A40900F8951E /* SpectrumDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SpectrumDebug.entitlements; sourceTree = "<group>"; };
-		9533A2C82356A40900F8951E /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = System/Library/Frameworks/HealthKit.framework; sourceTree = SDKROOT; };
 		9547C364231756AB008F28C7 /* Spectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9547C367231756AB008F28C7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9547C369231756AB008F28C7 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -110,7 +107,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9533A2C92356A40900F8951E /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,20 +147,11 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		9533A2C72356A40900F8951E /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				9533A2C82356A40900F8951E /* HealthKit.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		9547C35B231756AB008F28C7 = {
 			isa = PBXGroup;
 			children = (
 				9547C366231756AB008F28C7 /* Spectrum */,
 				9547C365231756AB008F28C7 /* Products */,
-				9533A2C72356A40900F8951E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -179,7 +166,6 @@
 		9547C366231756AB008F28C7 /* Spectrum */ = {
 			isa = PBXGroup;
 			children = (
-				9533A2C62356A40900F8951E /* SpectrumDebug.entitlements */,
 				957A911E2356663200BA241A /* Actions */,
 				95DB960523297C09007579EF /* App Control */,
 				95886F75234FD739005E6787 /* Helper Classes and Extensions */,
