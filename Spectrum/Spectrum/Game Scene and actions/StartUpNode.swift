@@ -6,7 +6,6 @@
 //  Copyright © 2019 TokenResearch. All rights reserved.
 //
 
-import Foundation
 import GameKit
 
 enum setUpState{
@@ -42,8 +41,7 @@ class StartUpNode:SceneControlNode{
         return ga
     }()
     
-    //for carasalu
-    var touch : UITouch?
+    
     let levels = Level.locations
     let spring:CGFloat = 300.0
     var index = Level.locations.count - 1
@@ -51,9 +49,10 @@ class StartUpNode:SceneControlNode{
     
     private lazy var playerOptions = [ 0:gameScene.neutralPlayer,1:gameScene.player,2:gameScene.player2]
     
+    //for carasalu
     
     private lazy var carousel : SKNode = getLevel()
-    
+    private var touch : UITouch?
     func getLevel()->SKNode{
         let players = Level.flavors[index]
         let c = SKNode()
@@ -63,7 +62,7 @@ class StartUpNode:SceneControlNode{
             sh.position = p
            
             sh.startPulseAction()
-           c.addChild(sh)
+            c.addChild(sh)
         }
         c.alpha = 0.0
         c.run(SKAction.fadeIn(withDuration: 2.0))
@@ -99,6 +98,7 @@ class StartUpNode:SceneControlNode{
          gameScene.addChild(gameScene.game.node)
         addSpawners(locations:levels[index], flavors:Level.flavors[index])
         
+        gameScene.setupUI()
         
     }
     func addSpawners(locations:[CGPoint], flavors:[Int]){

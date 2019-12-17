@@ -93,9 +93,11 @@ public extension Vector2{
         }
         return self
     }
+    
+    
 }
 
-
+//end andy;s stuff
 
 // MARK: Vector2
 
@@ -103,7 +105,7 @@ public extension Vector2 {
     static let zero = Vector2(0, 0)
     static let x = Vector2(1, 0)
     static let y = Vector2(0, 1)
-
+   
     var lengthSquared: Scalar {
         return x * x + y * y
     }

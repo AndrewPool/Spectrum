@@ -16,7 +16,7 @@ class PlayerComponent: GKComponent{
     //enforces the never call entity rule
     override var entity: GKEntity? {get{nil}}
     
-    var player : Player
+    let player : Player
     
     init(player:Player) {
         self.player=player
@@ -34,9 +34,9 @@ struct Player{
     let physicsKey:PhysicsKey
     let computer:Bool
     let name:String
-    let color:UIColor
+    let color:UIColor//will be texture one day
     init( name:String, key:PhysicsKey, color:UIColor){
-       neutral = false
+        neutral = false
         self.color = color
         computer = false
         self.name = name

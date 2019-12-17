@@ -6,7 +6,6 @@
 //  Copyright © 2019 TokenResearch. All rights reserved.
 //
 import GameKit
-import Foundation
 
 extension SpectrumScene:ControlDelegate{
     
@@ -14,7 +13,7 @@ extension SpectrumScene:ControlDelegate{
     //it passes off control to it's children, and when they're done they give it back. i think, hopefully
     
     
-    // these are the default calls durring the game loop object is to select the next thing
+    // these are the default calls durring the game loop, object is to select the next thing
     
     func touchesBegan(touches: Set<UITouch>) {
         
@@ -25,10 +24,10 @@ extension SpectrumScene:ControlDelegate{
                 if  let cc = spawner.controlComponent {
                     // ( spawner.playerComponent.player.physicsKey == currentPlayer.player.physicsKey) &&
                  
-                    if (!cc.selected && spawner.target.contains(location)){
+                    if (!cc.selected && cc.target.contains(location)){
                         
                         cc.selected = true
-                        game.selectedControlDelegates[touch] = cc
+                        game.selectedControlDelegates[touch] = [cc]
                         //controlDelegate = spawner.controlComponent
                         return//only do one per tap!
                     }
@@ -41,41 +40,36 @@ extension SpectrumScene:ControlDelegate{
     func touchesMoved(touches: Set<UITouch>) {
         
     }
-    //TODO
+    //TODO i'm not sure if this actually happens
     func touchesEnded(touches: Set<UITouch>) {
-      
+        for touch in touches{
+            game.selectedControlDelegates[touch]=nil
+        }
     }
     func touchesCancelled(touches: Set<UITouch>) {
-        
+        for touch in touches{
+                   game.selectedControlDelegates[touch]=nil
+               }
     }
     
-    
-//
-//    func switchColors(){
-//        for emitter in focusEmitterComposite.children{
-//            if let emitterChange = emitter as? SKEmitterNode{
-//
-//            }
-//        }
-//    }
     
     //selected sets up the focus emmitter, or it doesn't
     
     func toggleSelected(isTrue:Bool){
         if(isTrue){
         print("gamescene true")
-        addChild(focusEmitterComposite)
+       
             updateFunc = updateGame(_:)
         
         } else {
             print("gamescene false")
-            focusEmitterComposite.removeFromParent()
-            updateFunc = {_ in}
+         
+           // updateFunc = {_ in}
             
         }
         
     }
-    func setupFocusEmitterComposite(){
+    func setupFocusEmitterComposite(player:PlayerComponent){
         let left = SKEmitterNode(fileNamed: Constants.GameSceen.Focus.leftSideFile)!
         
         left.particleColor = player.player.color

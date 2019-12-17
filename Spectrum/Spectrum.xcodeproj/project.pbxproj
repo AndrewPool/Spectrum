@@ -10,10 +10,10 @@
 		950917EA23516C2200229713 /* GameCollisionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 950917E923516C2200229713 /* GameCollisionProtocol.swift */; };
 		95108BA4234BCA38002487D5 /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA2234BCA38002487D5 /* CoreDataModel.xcdatamodeld */; };
 		95108BA8234BDAE5002487D5 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95108BA7234BDAE5002487D5 /* VectorMath.swift */; };
-		952AC1EB234DB6100065FC14 /* TestScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 952AC1EA234DB6100065FC14 /* TestScene.sks */; };
 		952E97862342F60F0086F940 /* GameComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97852342F60F0086F940 /* GameComponent.swift */; };
 		952E97882342F8000086F940 /* BuddyEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E97872342F8000086F940 /* BuddyEntity.swift */; };
 		952E978C2342FE9A0086F940 /* BuddyComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 952E978B2342FE9A0086F940 /* BuddyComponent.swift */; };
+		953361C023A874150024B69A /* BuddySpawnerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 953361BF23A874140024B69A /* BuddySpawnerHelper.swift */; };
 		9533A2C323568FE600F8951E /* SKActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A2C223568FE600F8951E /* SKActions.swift */; };
 		9533A2C5235697CE00F8951E /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9533A2C4235697CE00F8951E /* UIHelper.swift */; };
 		9547C368231756AB008F28C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9547C367231756AB008F28C7 /* AppDelegate.swift */; };
@@ -36,15 +36,20 @@
 		9576D7A0233987A300615E7D /* StartUpNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9576D79F233987A300615E7D /* StartUpNode.swift */; };
 		957A911D23565E1400BA241A /* EndGameNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957A911C23565E1400BA241A /* EndGameNode.swift */; };
 		957A91222356676E00BA241A /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 957A91212356676E00BA241A /* Game.swift */; };
-		95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */; };
+		9595D01D235E50F400E05FEB /* SpectrumTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595D01C235E50F400E05FEB /* SpectrumTests.swift */; };
+		9595D025235E559400E05FEB /* SKEmitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595D024235E559400E05FEB /* SKEmitterHelper.swift */; };
+		9595D028235E565500E05FEB /* TargetEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 9595D026235E565500E05FEB /* TargetEmitter.sks */; };
+		9595D04E235E7EFE00E05FEB /* SKEmitterHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595D024235E559400E05FEB /* SKEmitterHelper.swift */; };
+		95B3A40923836F20000C3A3F /* PointToTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B3A40823836F20000C3A3F /* PointToTest.swift */; };
 		95B73128234FE5B6006E6888 /* ShapeComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B73127234FE5B6006E6888 /* ShapeComponent.swift */; };
-		95B7312A2350123D006E6888 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B731292350123D006E6888 /* Extensions.swift */; };
 		95B7312C235017E2006E6888 /* GamePhysicsDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */; };
 		95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95C273FC232D713500DDDD58 /* SpectrumShapes.swift */; };
+		95CD2DB82388BD0F00DC6BB3 /* GameButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95CD2DB72388BD0F00DC6BB3 /* GameButton.swift */; };
 		95DB96072329810E007579EF /* SpawnerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB96062329810E007579EF /* SpawnerEntity.swift */; };
 		95DB960D232983BB007579EF /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95DB960C232983BB007579EF /* Player.swift */; };
 		95DB96142329B41F007579EF /* ColorStars.scnp in Resources */ = {isa = PBXBuildFile; fileRef = 95DB96122329B41F007579EF /* ColorStars.scnp */; };
 		95DB96152329B41F007579EF /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 95DB96132329B41F007579EF /* star.png */; };
+		95F74F4F23A5D31200FE135B /* BonusControlDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 95F74F4E23A5D31200FE135B /* BonusControlDelegate.swift */; };
 		95FBB6D2233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */; };
 		95FBB6D3233C16DA003ADBEA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D1233C16DA003ADBEA /* Assets.xcassets */; };
 		95FBB6D5233C179E003ADBEA /* RightSideScreenFocusEmitter.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6D4233C179E003ADBEA /* RightSideScreenFocusEmitter.sks */; };
@@ -53,14 +58,24 @@
 		95FBB6DC233C4119003ADBEA /* FocusFire.sks in Resources */ = {isa = PBXBuildFile; fileRef = 95FBB6DB233C4119003ADBEA /* FocusFire.sks */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		9595D01F235E50F400E05FEB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9547C35C231756AB008F28C7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9547C363231756AB008F28C7;
+			remoteInfo = Spectrum;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		950917E923516C2200229713 /* GameCollisionProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCollisionProtocol.swift; sourceTree = "<group>"; };
 		95108BA3234BCA38002487D5 /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		95108BA7234BDAE5002487D5 /* VectorMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
-		952AC1EA234DB6100065FC14 /* TestScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TestScene.sks; sourceTree = "<group>"; };
 		952E97852342F60F0086F940 /* GameComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameComponent.swift; sourceTree = "<group>"; };
 		952E97872342F8000086F940 /* BuddyEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyEntity.swift; sourceTree = "<group>"; };
 		952E978B2342FE9A0086F940 /* BuddyComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyComponent.swift; sourceTree = "<group>"; };
+		953361BF23A874140024B69A /* BuddySpawnerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddySpawnerHelper.swift; sourceTree = "<group>"; };
 		9533A2C223568FE600F8951E /* SKActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKActions.swift; sourceTree = "<group>"; };
 		9533A2C4235697CE00F8951E /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		9547C364231756AB008F28C7 /* Spectrum.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Spectrum.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,15 +100,22 @@
 		9576D79F233987A300615E7D /* StartUpNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpNode.swift; sourceTree = "<group>"; };
 		957A911C23565E1400BA241A /* EndGameNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndGameNode.swift; sourceTree = "<group>"; };
 		957A91212356676E00BA241A /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddySpawnerHelper.swift; sourceTree = "<group>"; };
+		9595D01A235E50F400E05FEB /* SpectrumTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpectrumTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9595D01C235E50F400E05FEB /* SpectrumTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpectrumTests.swift; sourceTree = "<group>"; };
+		9595D01E235E50F400E05FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9595D024235E559400E05FEB /* SKEmitterHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKEmitterHelper.swift; sourceTree = "<group>"; };
+		9595D026235E565500E05FEB /* TargetEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = TargetEmitter.sks; sourceTree = "<group>"; };
+		95B3A40823836F20000C3A3F /* PointToTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointToTest.swift; sourceTree = "<group>"; };
+		95B3A40A238372FE000C3A3F /* Spectrum.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Spectrum.entitlements; sourceTree = "<group>"; };
 		95B73127234FE5B6006E6888 /* ShapeComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeComponent.swift; sourceTree = "<group>"; };
-		95B731292350123D006E6888 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePhysicsDelegate.swift; sourceTree = "<group>"; };
 		95C273FC232D713500DDDD58 /* SpectrumShapes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpectrumShapes.swift; sourceTree = "<group>"; };
+		95CD2DB72388BD0F00DC6BB3 /* GameButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameButton.swift; sourceTree = "<group>"; };
 		95DB96062329810E007579EF /* SpawnerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpawnerEntity.swift; sourceTree = "<group>"; };
 		95DB960C232983BB007579EF /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		95DB96122329B41F007579EF /* ColorStars.scnp */ = {isa = PBXFileReference; lastKnownFileType = file.scp; path = ColorStars.scnp; sourceTree = "<group>"; };
 		95DB96132329B41F007579EF /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		95F74F4E23A5D31200FE135B /* BonusControlDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BonusControlDelegate.swift; sourceTree = "<group>"; };
 		95FBB6D0233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = LeftSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
 		95FBB6D1233C16DA003ADBEA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95FBB6D4233C179E003ADBEA /* RightSideScreenFocusEmitter.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RightSideScreenFocusEmitter.sks; sourceTree = "<group>"; };
@@ -110,12 +132,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9595D017235E50F400E05FEB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		95058D3E2340093B0094C359 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				953361BF23A874140024B69A /* BuddySpawnerHelper.swift */,
 				95DB96062329810E007579EF /* SpawnerEntity.swift */,
 				952E97872342F8000086F940 /* BuddyEntity.swift */,
 			);
@@ -140,9 +170,9 @@
 			children = (
 				9564F6A42342EA6300420557 /* Constants.swift */,
 				95C273FC232D713500DDDD58 /* SpectrumShapes.swift */,
-				95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */,
 				957A91212356676E00BA241A /* Game.swift */,
 				95525E012359723F002D704C /* Levels.swift */,
+				95CD2DB72388BD0F00DC6BB3 /* GameButton.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +181,7 @@
 			isa = PBXGroup;
 			children = (
 				9547C366231756AB008F28C7 /* Spectrum */,
+				9595D01B235E50F400E05FEB /* SpectrumTests */,
 				9547C365231756AB008F28C7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				9547C364231756AB008F28C7 /* Spectrum.app */,
+				9595D01A235E50F400E05FEB /* SpectrumTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -166,6 +198,7 @@
 		9547C366231756AB008F28C7 /* Spectrum */ = {
 			isa = PBXGroup;
 			children = (
+				95B3A40A238372FE000C3A3F /* Spectrum.entitlements */,
 				957A911E2356663200BA241A /* Actions */,
 				95DB960523297C09007579EF /* App Control */,
 				95886F75234FD739005E6787 /* Helper Classes and Extensions */,
@@ -192,13 +225,14 @@
 		95886F75234FD739005E6787 /* Helper Classes and Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				95886F76234FD75B005E6787 /* BuddySpawnerHelper.swift */,
 				95108BA7234BDAE5002487D5 /* VectorMath.swift */,
-				95B731292350123D006E6888 /* Extensions.swift */,
 				95539D0D2352E17100550FD6 /* GameControlDelegate.swift */,
 				95539D0F2352E32600550FD6 /* GameUIControlDelegate.swift */,
 				95539D112352E39B00550FD6 /* GameBackGroundHelper.swift */,
 				9533A2C4235697CE00F8951E /* UIHelper.swift */,
+				95B7312B235017E2006E6888 /* GamePhysicsDelegate.swift */,
+				9595D024235E559400E05FEB /* SKEmitterHelper.swift */,
+				95F74F4E23A5D31200FE135B /* BonusControlDelegate.swift */,
 			);
 			path = "Helper Classes and Extensions";
 			sourceTree = "<group>";
@@ -212,11 +246,20 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		9595D01B235E50F400E05FEB /* SpectrumTests */ = {
+			isa = PBXGroup;
+			children = (
+				9595D01C235E50F400E05FEB /* SpectrumTests.swift */,
+				9595D01E235E50F400E05FEB /* Info.plist */,
+				95B3A40823836F20000C3A3F /* PointToTest.swift */,
+			);
+			path = SpectrumTests;
+			sourceTree = "<group>";
+		};
 		95DB960423297B68007579EF /* Game Scene and actions */ = {
 			isa = PBXGroup;
 			children = (
 				9547C369231756AB008F28C7 /* GameScene.sks */,
-				952AC1EA234DB6100065FC14 /* TestScene.sks */,
 				95525DFF23595D0C002D704C /* SplashNode.swift */,
 				9576D79F233987A300615E7D /* StartUpNode.swift */,
 				9547C36D231756AB008F28C7 /* SpectrumScene.swift */,
@@ -244,6 +287,7 @@
 				95FBB6D6233C1C59003ADBEA /* Focus */,
 				95DB96132329B41F007579EF /* star.png */,
 				95DB96122329B41F007579EF /* ColorStars.scnp */,
+				9595D026235E565500E05FEB /* TargetEmitter.sks */,
 			);
 			path = Emitters;
 			sourceTree = "<group>";
@@ -289,18 +333,40 @@
 			productReference = 9547C364231756AB008F28C7 /* Spectrum.app */;
 			productType = "com.apple.product-type.application";
 		};
+		9595D019235E50F400E05FEB /* SpectrumTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9595D023235E50F400E05FEB /* Build configuration list for PBXNativeTarget "SpectrumTests" */;
+			buildPhases = (
+				9595D016235E50F400E05FEB /* Sources */,
+				9595D017235E50F400E05FEB /* Frameworks */,
+				9595D018235E50F400E05FEB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9595D020235E50F400E05FEB /* PBXTargetDependency */,
+			);
+			name = SpectrumTests;
+			productName = SpectrumTests;
+			productReference = 9595D01A235E50F400E05FEB /* SpectrumTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		9547C35C231756AB008F28C7 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1030;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = TokenResearch;
 				TargetAttributes = {
 					9547C363231756AB008F28C7 = {
 						CreatedOnToolsVersion = 10.3;
+					};
+					9595D019235E50F400E05FEB = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 9547C363231756AB008F28C7;
 					};
 				};
 			};
@@ -318,6 +384,7 @@
 			projectRoot = "";
 			targets = (
 				9547C363231756AB008F28C7 /* Spectrum */,
+				9595D019235E50F400E05FEB /* SpectrumTests */,
 			);
 		};
 /* End PBXProject section */
@@ -329,8 +396,8 @@
 			files = (
 				9547C373231756AB008F28C7 /* Main.storyboard in Resources */,
 				9547C36A231756AB008F28C7 /* GameScene.sks in Resources */,
-				952AC1EB234DB6100065FC14 /* TestScene.sks in Resources */,
 				95FBB6DA233C28CE003ADBEA /* BottomSideScreenFocusEmitter.sks in Resources */,
+				9595D028235E565500E05FEB /* TargetEmitter.sks in Resources */,
 				95FBB6D3233C16DA003ADBEA /* Assets.xcassets in Resources */,
 				9547C375231756AC008F28C7 /* Assets.xcassets in Resources */,
 				95FBB6D2233C16DA003ADBEA /* LeftSideScreenFocusEmitter.sks in Resources */,
@@ -340,6 +407,13 @@
 				95DB96152329B41F007579EF /* star.png in Resources */,
 				9547C378231756AC008F28C7 /* LaunchScreen.storyboard in Resources */,
 				95FBB6D8233C2809003ADBEA /* TopSideScreenFocusEmitter.sks in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9595D018235E50F400E05FEB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,14 +432,13 @@
 				957A91222356676E00BA241A /* Game.swift in Sources */,
 				9547C36E231756AB008F28C7 /* SpectrumScene.swift in Sources */,
 				950917EA23516C2200229713 /* GameCollisionProtocol.swift in Sources */,
+				9595D025235E559400E05FEB /* SKEmitterHelper.swift in Sources */,
 				95525E04235973F6002D704C /* SceneControlNode.swift in Sources */,
-				95886F77234FD75B005E6787 /* BuddySpawnerHelper.swift in Sources */,
 				9576D7A0233987A300615E7D /* StartUpNode.swift in Sources */,
 				9576D79E2339647600615E7D /* ControlDelagate.swift in Sources */,
 				95539D0E2352E17100550FD6 /* GameControlDelegate.swift in Sources */,
 				9547C370231756AB008F28C7 /* GameViewController.swift in Sources */,
 				95108BA4234BCA38002487D5 /* CoreDataModel.xcdatamodeld in Sources */,
-				95B7312A2350123D006E6888 /* Extensions.swift in Sources */,
 				95539D122352E39B00550FD6 /* GameBackGroundHelper.swift in Sources */,
 				952E978C2342FE9A0086F940 /* BuddyComponent.swift in Sources */,
 				956FC6662340388E001DC850 /* ControlComponent.swift in Sources */,
@@ -377,14 +450,35 @@
 				952E97862342F60F0086F940 /* GameComponent.swift in Sources */,
 				95C273FD232D713500DDDD58 /* SpectrumShapes.swift in Sources */,
 				95B7312C235017E2006E6888 /* GamePhysicsDelegate.swift in Sources */,
+				953361C023A874150024B69A /* BuddySpawnerHelper.swift in Sources */,
 				95DB960D232983BB007579EF /* Player.swift in Sources */,
 				9564F6A52342EA6300420557 /* Constants.swift in Sources */,
 				956FC6642340357A001DC850 /* SpawnerComponent.swift in Sources */,
+				95CD2DB82388BD0F00DC6BB3 /* GameButton.swift in Sources */,
+				95F74F4F23A5D31200FE135B /* BonusControlDelegate.swift in Sources */,
 				9533A2C5235697CE00F8951E /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		9595D016235E50F400E05FEB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95B3A40923836F20000C3A3F /* PointToTest.swift in Sources */,
+				9595D04E235E7EFE00E05FEB /* SKEmitterHelper.swift in Sources */,
+				9595D01D235E50F400E05FEB /* SpectrumTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9595D020235E50F400E05FEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9547C363231756AB008F28C7 /* Spectrum */;
+			targetProxy = 9595D01F235E50F400E05FEB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9547C371231756AB008F28C7 /* Main.storyboard */ = {
@@ -464,6 +558,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = armv7;
 			};
 			name = Debug;
 		};
@@ -515,10 +610,12 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = armv7;
 			};
 			name = Release;
 		};
@@ -526,8 +623,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Spectrum/SpectrumDebug.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Spectrum/Spectrum.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = PJ28SKB4DT;
 				INFOPLIST_FILE = Spectrum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -535,10 +634,14 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = TokenResearch.info.Spectrum;
+				MARKETING_VERSION = 0.0.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = info.tokenresearch.wavespectrum;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
 			};
 			name = Debug;
 		};
@@ -546,7 +649,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Spectrum/Spectrum.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 0.1;
 				DEVELOPMENT_TEAM = PJ28SKB4DT;
 				INFOPLIST_FILE = Spectrum/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -554,10 +659,56 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = TokenResearch.info.Spectrum;
+				MARKETING_VERSION = 0.0.3;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = info.tokenresearch.wavespectrum;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "$(ARCHS_STANDARD)";
+			};
+			name = Release;
+		};
+		9595D021235E50F400E05FEB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PJ28SKB4DT;
+				INFOPLIST_FILE = SpectrumTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokenResearch.info.SpectrumTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrum.app/Spectrum";
+			};
+			name = Debug;
+		};
+		9595D022235E50F400E05FEB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PJ28SKB4DT;
+				INFOPLIST_FILE = SpectrumTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.tokenResearch.info.SpectrumTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Spectrum.app/Spectrum";
 			};
 			name = Release;
 		};
@@ -578,6 +729,15 @@
 			buildConfigurations = (
 				9547C37D231756AC008F28C7 /* Debug */,
 				9547C37E231756AC008F28C7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9595D023235E50F400E05FEB /* Build configuration list for PBXNativeTarget "SpectrumTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9595D021235E50F400E05FEB /* Debug */,
+				9595D022235E50F400E05FEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

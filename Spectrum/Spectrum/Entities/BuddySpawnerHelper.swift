@@ -16,7 +16,7 @@ extension SpawnerEntity {
         let buddy = BuddyEntity(owner: self)
         scene.game.buddyEntities.append(buddy)
         
-        let buddyComponent = BuddyComponent()
+         let buddyComponent = BuddyComponent(getFocusFunction: {self.focus})
         buddy.addComponent(buddyComponent)
         
         buddy.addComponent(playerComponent)

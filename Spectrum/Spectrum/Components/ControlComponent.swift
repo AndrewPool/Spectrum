@@ -10,18 +10,27 @@ import GameKit
 
 //this currently can only be owned by the spawner entity
 class ControlComponent: GKComponent,ControlDelegate{
+    //cache
+    weak var scene : SpectrumScene!
+    
     
     var selected: Bool = false
-    {didSet{if(selected){
-        if let e : SpawnerEntity = entity as? SpawnerEntity {e.scene.addChild(focusFire) }} else{focusFire.removeFromParent()}  }}
+    {didSet{if(selected)
+    {self.target.addChild(focusFire)
+        if let e : SpawnerEntity = entity as? SpawnerEntity {
+            
+            focusFire.particleColor = e.playerComponent.player.color}
+    }
+    else{focusFire.removeFromParent()}  }}
     
     
-    //here are the various SKNodes
-    lazy var focusFire : SKEmitterNode = {
+    //here are the various SKNodses
+    private let getFocus : (()->CGPoint)!
+    
+    private lazy var focusFire : SKEmitterNode = {
         let focusFire = SKEmitterNode(fileNamed: "FocusFire.sks")!
         if let e : SpawnerEntity = entity as? SpawnerEntity {
             
-            focusFire.position = e.focus
             focusFire.particleColor = e.playerComponent.player.color
             focusFire.particleColorSequence = nil
             focusFire.zPosition = CGFloat(Constants.Layers.background)
@@ -30,19 +39,59 @@ class ControlComponent: GKComponent,ControlDelegate{
         }
         return focusFire
     }()
-     init(scene: SpectrumScene) {
+    //target is the root for the others
+    lazy var target : SKSpriteNode = {
+        let t = SKSpriteNode(imageNamed: Constants.UI.TargetImageName)
+        
+        if let e : SpawnerEntity = entity as? SpawnerEntity {
+                   t.color = e.playerComponent.player.color
+                  
+               }
+        
+        
+        t.zPosition = CGFloat(Constants.Layers.topLayer)
+        
+        t.alpha = 0.5
+     
+            t.position = getFocus()
+        
+        return t
+        
+    }()
+    
+    lazy var targetEmitter : SKEmitterNode = {
+        let e = SKEmitterNode(fileNamed: "TargetEmitter")!
+        if let se : SpawnerEntity = entity as? SpawnerEntity {
+            e.particleColor = se.playerComponent.player.color
+            e.particleColorSequence = nil
+        }
+        e.particleColorSequence = nil
+        e.speed = 0.3
+        e.alpha = 1
+        e.zPosition = 10
+        
+        return e
+    }()
+    /// end SKNODES above
+    
+    
+    ///init
+    
+    init(scene: SpectrumScene, getFocus:@escaping ()->CGPoint) {
         self.scene = scene
+        self.getFocus = getFocus
         super.init()
+        scene.game.node.addChild(target)
+        target.addChild(targetEmitter)
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    //init above
     
-    
-    //cache
-    weak var scene : SpectrumScene!
-    
+  
     //---------delegate controls below
     func touchesBegan(touches: Set<UITouch>) {
         //print("Component TD")
@@ -77,13 +126,30 @@ class ControlComponent: GKComponent,ControlDelegate{
       //  scene.controlDelegate = spawnerEntity().scene
        focusFire.zPosition = CGFloat(Constants.Layers.background)
     }
-    
+    //this is the meatty funciton
     private func moveFocus(to location:CGPoint){
-       if let e : SpawnerEntity = entity as? SpawnerEntity {
+      
+      //  focus = location
+        let e = entity! as! SpawnerEntity
         e.focus = location
+        target.position = location
+     
+       //getts the bubbles flowing in the right direction
+        if let e = entity as? SpawnerEntity{
+            
+            targetEmitter.xAcceleration = ( e.location.x - target.position.x)*1.5
+            targetEmitter.yAcceleration = (e.location.y - target.position.y)*1.5
+        }
         
-        focusFire.position = location
-        
-        }}
-    
 }
+
+    override func willRemoveFromEntity() {
+          //let e = entity! as! SpawnerEntity
+       // e.focus = e.location
+        target.run(SKAction.sequence([SKAction.fadeOut(withDuration: Constants.GameSceen.FadeOutDuration/2),SKAction.removeFromParent()]))
+        print("will remove control component")
+    }
+
+
+}
+

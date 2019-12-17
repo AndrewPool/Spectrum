@@ -11,8 +11,6 @@ import GameplayKit
 
 class SpectrumScene: SKScene, UISceneDelegate {
     
-    
-   
     //var state : State!{didSet{state.changedState(for: self)}}
     
     let neutralPlayer = PlayerComponent(player: Player())
@@ -21,12 +19,70 @@ class SpectrumScene: SKScene, UISceneDelegate {
     //
     let player2 = PlayerComponent(player: Player(name: "jamie", key: PhysicsKey.player2, color:UIColor.yellow))
     //
-    
+    lazy var playersButtons : [PlayerComponent:GameButton] = [player:p1groupControl, player2:p2groupControl]
     //game control
-    
     private var physicsDelegate : GamePhysicsDelegate!//i need a pointer to this
     
-    
+    //this is some word salad, it is everything that happens when you press the bonus button. it's a fucking work salad. idk not much to do other than explain each line,\TODO
+    //also this should probably be somewhere else... I need to make these entities...
+    private func setControlForPlayer(player:PlayerComponent){
+        let otherPlayersEntitiesWithControlComponents = game.spawnerEntities.filter(){$0.playerComponent != player && !$0.playerComponent.player.computer}
+        for e in otherPlayersEntitiesWithControlComponents{
+            e.removeComponent(ofType: ControlComponent.self)
+        }
+        controlDelegate = BonusControlDelegate(selected: true, player: player, scene: self)
+        playersButtons[player]?.toggleSelectable(false)
+        p1groupControl.removeFromParent()
+        p2groupControl.removeFromParent()
+        setupFocusEmitterComposite(player: player)
+        addChild(focusEmitterComposite)
+        
+        focusEmitterComposite.run(SKAction.fadeOut(withDuration: Constants.Spawner.pulseSpeedInterval*2)){
+            self.focusEmitterComposite.removeFromParent()
+            
+            self.controlDelegate = self
+            self.addChild(self.p1groupControl)
+            self.addChild(self.p2groupControl)
+            for e in otherPlayersEntitiesWithControlComponents{
+                e.addControlComponent()
+            }
+        }
+        
+        
+        
+    }
+    //for making the game playable.
+   lazy private var p1groupControl : GameButton = {
+        
+    let gb = GameButton(player:player, imageNamed: "BlueStar", action:{
+            print("BlueStar squence start")
+           
+            self.setControlForPlayer(player:self.player)
+            
+            
+            print("BlueStar sequence complete")
+        })
+      
+        gb.position = CGPoint(x: 400, y: 50)
+        gb.zPosition = 10
+        
+        
+        
+        return gb
+    }()
+    lazy private var p2groupControl : GameButton = {
+        let gb = GameButton(player:player2, imageNamed: "YellowStar", action:{
+            self.setControlForPlayer(player:self.player2)
+            print("YellowStar")
+        })
+        
+        gb.position = CGPoint(x: -400, y: 50)
+        gb.zPosition = 10
+        
+        
+        
+        return gb
+    }()
     
     //this toggles the selected property of ControlDelegate thus letting it know to stop doing whatever it was doing as focused, and letting the new one to start
     var controlDelegate : ControlDelegate! {
@@ -40,6 +96,7 @@ class SpectrumScene: SKScene, UISceneDelegate {
     
     private var pauseButton : SKSpriteNode?//not state
     
+   
     var focusEmitterComposite = SKNode()
     
     lazy var background: SKNode = { return SKNode()}()
@@ -59,9 +116,7 @@ class SpectrumScene: SKScene, UISceneDelegate {
         
         setupPhysics()
         
-        setupFocusEmitterComposite()
-        
-        controlDelegate = SplashNode( self)
+        controlDelegate = SplashNode(self)
      
         setupBackground()
         
@@ -71,6 +126,10 @@ class SpectrumScene: SKScene, UISceneDelegate {
         physicsWorld.contactDelegate = physicsDelegate
         physicsWorld.gravity = CGVector(dx: 0.0, dy: 0.0)
         
+    }
+    func setupUI(){
+        game.node.addChild(p1groupControl)
+        game.node.addChild(p2groupControl)
     }
     
     //----------------scene did load aboce----------------
@@ -86,7 +145,7 @@ class SpectrumScene: SKScene, UISceneDelegate {
     }
     
      func updateGame(_ currentTime: TimeInterval) {
-      // winCheck()
+      
         // Called before each frame is rendered
          //print("updating")
         // Initialize _lastUpdateTime if it has not already been
@@ -96,11 +155,16 @@ class SpectrumScene: SKScene, UISceneDelegate {
         
         let deltaTime = currentTime-game.lastUpdateTime
         
-        
+        for b in playersButtons.values{
+            b.countUp += deltaTime
+            if b.countUp > GameButton.BuildUp && b.selectable == false {
+                b.toggleSelectable(true)
+            }
+        }
         
         game.buddypulseIntervalCount = game.buddypulseIntervalCount - deltaTime
         if game.buddypulseIntervalCount <= 0{
-            game.buddypulseIntervalCount = game.buddypulseInterval
+            game.buddypulseIntervalCount = Constants.Spawner.pulseSpeedInterval
             for entity in game.buddyEntities{
                 //i should note that deltatime shouldn't be used here as  such.
                 entity.update(deltaTime: deltaTime)
@@ -137,17 +201,11 @@ class SpectrumScene: SKScene, UISceneDelegate {
     private func winCheck() {
         //print(game.playing)
         if game.over && game.playing{
-            //pauseGame()
-         
-                
-         // pauseGame()
+            updateFunc = {_ in}
             game.newGame()
-            controlDelegate = EndGameNode( self)
+            controlDelegate = EndGameNode(self)
             physicsDelegate = GamePhysicsDelegate()
-        
         }
-        
-        
     }
     //-------------update above-------------------
  
@@ -171,7 +229,7 @@ class SpectrumScene: SKScene, UISceneDelegate {
     }
 
     
-    //this is a test
+    //this is a test i don't think this ever fires
     func sceneWillResignActive(_ scene: UIScene) {
         physicsWorld.gravity = CGVector(dx: 100, dy: 100)
     }

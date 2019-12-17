@@ -18,7 +18,16 @@ class SplashNode:SceneControlNode{
         l.configured()
         return l
     }()
-
+    lazy var tap : SKLabelNode = {
+           
+           let t = SKLabelNode(text: "tap")
+      
+           t.configured()
+        t.alpha = 0.0
+          t.position.y = -300
+        t.run(SKAction.fadeRepeat())
+           return t
+       }()
     override init(_ scene:SpectrumScene){
         super.init(scene)
     }
@@ -41,9 +50,11 @@ class SplashNode:SceneControlNode{
             gameScene.addChild(self)
             print("setup true")
             addLabel()
+            addChild(tap)
             
         }else{
             print("setupfalse")
+            tap.run(SKAction.standardFadeOut())
             label.run(SKAction.standardFadeOut())
             self.run(SKAction.standardFadeOut())
         }

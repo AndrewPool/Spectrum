@@ -20,7 +20,8 @@ class SpawnerEntity: GKEntity{
     }
   
     //grab weak pointers for the sweet cashe value
-    
+    var focus : CGPoint
+    let location : CGPoint//we can just put this here, it;s a constant, will save me sanity
     //parent scene
     weak var scene: SpectrumScene!
     
@@ -33,21 +34,7 @@ class SpawnerEntity: GKEntity{
     weak var spawnerComponent: SpawnerComponent?
     
     //this is entity stuff, location and buddies
-    var focus : CGPoint {
-        didSet{
-            target.position = focus
-        }
-    }
-    
-    lazy var target : SKSpriteNode = {
-        let t = SKSpriteNode(imageNamed: Constants.UI.TargetImageName)
-        t.position = focus
-        t.zPosition = CGFloat(Constants.Layers.topLayer)
-        t.color = playerComponent.player.color
-        t.alpha = 0.5
-       return t
-        
-    }()
+
     //
     private var shape = Shape.Circle
     
@@ -56,8 +43,8 @@ class SpawnerEntity: GKEntity{
     
     //this becomes the designated init()
     init(scene:SpectrumScene, player: PlayerComponent, location: CGPoint) {
-        focus = location
-        
+        self.location = location
+        self.focus = location
         self.scene = scene
         super.init()
         //sets up the required components
@@ -66,13 +53,12 @@ class SpawnerEntity: GKEntity{
         self.playerComponent = player
         //shape
         setShape()//see below
-        scene.game.node.addChild(target)
-        
+       
     }
     
     private func setShape(){
-         let position = focus
-        
+         let position = location
+         
         let shapeComponent = ShapeComponent(shape: shape, player: playerComponent.player, size: Constants.Spawner.size)
         addComponent(shapeComponent)
         self.shapeComponent = shapeComponent
@@ -100,7 +86,7 @@ class SpawnerEntity: GKEntity{
     }
     func addControlComponent(){
         
-        let controlComponentStart  = ControlComponent(scene: scene)
+        let controlComponentStart  = ControlComponent(scene: scene, getFocus: {self.focus})
         addComponent(controlComponentStart)
         controlComponent=controlComponentStart
         

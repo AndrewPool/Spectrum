@@ -29,7 +29,12 @@ extension SpectrumScene{//:UISceneDelegate
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            game.selectedControlDelegates[t]?.touchesMoved(touches: [t])
+           if let dict = game.selectedControlDelegates[t] {
+                for cc in dict {
+                    cc.touchesMoved(touches: touches)
+                }
+            }
+            
         }
         
         if (controlDelegate != nil){
@@ -41,9 +46,13 @@ extension SpectrumScene{//:UISceneDelegate
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for t in touches {
-            game.selectedControlDelegates[t]?.touchesEnded(touches: [t])
-              }
-        
+            
+            if let dict = game.selectedControlDelegates[t] {
+                for cc in dict {
+                    cc.touchesEnded(touches: touches)
+                }
+            }
+        }
         if (controlDelegate != nil){
             controlDelegate!.touchesEnded(touches: touches)
             
@@ -52,17 +61,20 @@ extension SpectrumScene{//:UISceneDelegate
     }
     
     override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-         for t in touches {
-            game.selectedControlDelegates[t]?.touchesCancelled(touches: [t])
-              }
-        
-        if (controlDelegate != nil){
-            controlDelegate!.touchesCancelled(touches: touches)
+        for t in touches {
+            if let dict = game.selectedControlDelegates[t] {
+                for cc in dict {
+                    cc.touchesCancelled(touches: touches)
+                }
+            }
+        }
+            if (controlDelegate != nil){
+                controlDelegate!.touchesCancelled(touches: touches)
+                
+            }
             
         }
         
-    }
-    
     
     
     //-----------------touches and helpers and ControlDelegate above--------------

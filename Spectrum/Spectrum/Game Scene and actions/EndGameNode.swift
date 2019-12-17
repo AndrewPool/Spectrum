@@ -8,17 +8,18 @@
 
 //import Foundation
 import GameKit
+
 class EndGameNode:SceneControlNode{
     
+    private var state : setUpState = .animating
     
     override var selected : Bool{didSet{toggleSelected(selected)}}
     private lazy var label : SKNode = {
-       
-      
+    
         return SKLabelNode()
     }()
    
-    
+    //ctych
     private func addLabel(){
         //label.s= gameScene.frame
         let winner = SKLabelNode(text: "WINNER")
@@ -51,7 +52,9 @@ class EndGameNode:SceneControlNode{
             gameScene.addChild(self)
             addLabel()
             alpha = 0.0
-            run(SKAction.fadeIn(withDuration: 5.0))
+            run(SKAction.fadeIn(withDuration: 5.0)){
+                self.state = .idle
+            }
             
         }else{
              self.run(SKAction.standardFadeOut())
@@ -74,7 +77,11 @@ class EndGameNode:SceneControlNode{
     //
     override func touchesBegan(touches: Set<UITouch>) {
         print("EndGame Delegate touches began")
-        gameScene.controlDelegate = SplashNode( gameScene)
+        switch state{
+        case .idle:
+            gameScene.controlDelegate = SplashNode( gameScene)
+        default: break
+        }
         
     }
     

@@ -38,7 +38,7 @@ struct Constants{
            
            }
     }
-    
+  
     struct UI{
         static let GoArrowImageName = "GoArrow.png"
         static let TargetImageName = "Target.png"
@@ -118,8 +118,8 @@ enum PhysicsKey{
     }
     //for buddies
     func setupCollisionParamaters(buddy:SKPhysicsBody){
-        buddy.restitution = 0.1
-        buddy.friction = 0.1
+        buddy.restitution = 0.0
+        buddy.friction = 0.0
         buddy.allowsRotation = false
         switch self{
         case .neutral:

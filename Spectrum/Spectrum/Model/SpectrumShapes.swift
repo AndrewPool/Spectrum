@@ -16,8 +16,9 @@ enum Shape{
     func getPath( size:Int)->CGPath{
         
         switch (self){
-        case .Circle: return CGPath(ellipseIn: CGRect(x: -size/2, y: -size/2, width: size, height: size), transform: nil)}
-        
+        case .Circle: return CGPath(ellipseIn: CGRect(x: -size/2, y: -size/2, width: size, height: size), transform: nil)
+            
+        }
     }
     
 }
@@ -41,8 +42,7 @@ class SpectrumShape : SKShapeNode {
     private var size:Int
     //shape color and stuff`
     let strokeWidth = 5
-    let outlineColor = UIColor.red
-    let inlineColor = UIColor.purple
+   
     //cashe value
     var gameComponent : GameCollisionProtocol!
 
@@ -63,9 +63,9 @@ class SpectrumShape : SKShapeNode {
        
         lineWidth = CGFloat(strokeWidth)
        
-        strokeColor = inlineColor
+       // strokeColor = inlineColor
         isUserInteractionEnabled = false// looks like this needs to be in the init
-     configWithPlayer(player: player)
+        configWithPlayer(player: player)
         
     }
     func configWithPlayer(player:Player){
@@ -81,7 +81,8 @@ class SpectrumShape : SKShapeNode {
     }
     func setUpCollisionAsSpawner(){
         
-            physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
+        
+        physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size))
           
         physicsBody = SKPhysicsBody(circleOfRadius: CGFloat(size)/2)
         physicsBody!.isDynamic = false

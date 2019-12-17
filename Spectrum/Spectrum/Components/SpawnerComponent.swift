@@ -14,8 +14,11 @@ class SpawnerComponent: GKComponent{
    //sweet sweet functional programing
     var spawnBuddy: (()->Void)!
     
-    private var spawnCountdown = 0.0
+    public var spawnCountdown = 0.0
     
+    public func increment(by amount:Double){
+        spawnCountdown += amount
+    }
     
     //-------------update and helpers----------------------
     override func update(deltaTime seconds: TimeInterval) {
@@ -23,11 +26,11 @@ class SpawnerComponent: GKComponent{
     }
     
     private func tryToSpawn(deltaTime: TimeInterval){
-        if (spawnCountdown >= Constants.Spawner.pulseSpeedInterval){
+        if (spawnCountdown < 0){
             spawnBuddy()
-            spawnCountdown = 0
+            spawnCountdown += Constants.Spawner.pulseSpeedInterval
         }
-        spawnCountdown += deltaTime
+        spawnCountdown -= deltaTime
         
     }
     

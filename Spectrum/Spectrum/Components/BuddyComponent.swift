@@ -14,10 +14,21 @@ class BuddyComponent: GKComponent{
  
     //-------------update and helpers----------------------
    
-    //TODO move somewhere else
+    //TODO move somewhere else also make distance^2 instead of distance
     private var strength:Scalar = 40.0
     private var strength2:Scalar = 60.0
    // private let randomFactor = 0.9...0.1
+    
+    private var getFocus:()->CGPoint
+    
+    init(getFocusFunction:@escaping ()->CGPoint) {
+        getFocus = getFocusFunction
+        super.init()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func update(deltaTime seconds: TimeInterval) {
        doSomeThing()
@@ -28,7 +39,7 @@ class BuddyComponent: GKComponent{
 
         guard let currentVelocity = shapeNode.physicsBody?.velocity else {return}
        
-        let focus = Vector2(buddyEntity().owner.focus)
+        let focus = Vector2(getFocus())
         
         let selfLocation = Vector2(shapeNode.position)
                
